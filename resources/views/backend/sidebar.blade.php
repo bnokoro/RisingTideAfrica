@@ -21,7 +21,7 @@
 
                     <li class="menu-title">Users</li>
                     <li>
-                        <a href="/admin/startups" class="waves-effect">
+                        <a href="/mentors" class="waves-effect">
                             <i class="fas fa-users"></i>
                             <span> Mentors </span>
                         </a>
@@ -33,8 +33,18 @@
                         </a>
                     </li>
 
-
-                  
+                    <li>
+                        <a href="/mentorship-categories" class="waves-effect">
+                            <i class="fas fa-book"></i>
+                            <span> Mentorship Categories </span>
+                        </a>
+                    </li>
+                     <li>
+                        <a href="/mentee-stages" class="waves-effect">
+                            <i class="fas fa-book"></i>
+                            <span> Mentee Stages </span>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="clearfix"></div>

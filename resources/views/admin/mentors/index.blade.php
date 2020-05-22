@@ -11,12 +11,10 @@
 <div class="row">
     <div class="col-sm-12">
         <div class="page-title-box">
-            <h4 class="page-title">Users
-                <a href="{{ route('users.create') }}" class="btn btn-primary waves-effect waves-light float-right">Add User</a>
-            </h4>
+            <h4 class="page-title">Mentors</h4>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
-                <li class="breadcrumb-item active"><a href="#">Users</a></li>
+                <li class="breadcrumb-item active"><a href="#">Mentors</a></li>
             </ol>
         </div>
     </div>
@@ -33,8 +31,9 @@
                         <th>Full Name</th>
                         <th>E-Mail</th>
                         <th>Phone</th>
-                        <th>Country</th>
-                        <th>User Type</th>
+                        <th>Mentorship Category</th>
+                        <th>Day Choosen</th>
+                        <th>Time Choosen</th>
                         <th>Actions</th>
                     </thead>
 
@@ -44,22 +43,21 @@
                             <td>{{$sn++}}</td>
                             <td>{{$user->first_name . ' ' . $user->last_name . ' ' . $user->middle_name}}</td>
                             <td>{{$user->email}}</td>
-                            <td>
-                                @if ($user->user_type)
-                                    @if ($user->user_type->user_type == 'investor')
-                                        {{$user->investor_profile->phone}}
-                                    @else
-                                        {{$user->startup_profile->phone}}
-                                    @endif
-                                @endif
-                            </td>
-                            <td>{{$user->country->country}}</td>
-                            <td>Startup</td>
+                            <td>{{$user->phone}}</td>
+                            <td>{{$user->mentorship_category}}</td>
+                            <td>{{$user->day_choosen}}</td>
+                            <td>{{$user->time_choosen}}</td>
                             <td style="text-align: center">
                                 <a href="#" class="btn btn-info btn-sm">
                                     View
                                 </a> |
-                                <button class="btn btn-danger btn-sm" onclick="handleDelete({{$user->id}})">Delete</button>
+                            <button
+                             class="btn btn-danger btn-sm waves-effect waves-light delete-button"
+                            data-toggle="modal"
+                             data-url="/mentor/{{$user->id}}"
+                            data-target="#delete-mentor">
+                            Delete
+                            </button>
                             </td>
                         </tr>
                         @endforeach
@@ -68,25 +66,10 @@
             </div>
         </div>
     </div>
+
+    @include('admin.mentors.partials._delete')
+
 </div>
 
-@endsection
+@stop
 
-@section('scripts')
-
-<script>
-    function handleDelete(id) {
-
-        var form = document.getElementById('deleteUsersForm')
-
-        form.action = '/users/' + id
-
-        console.log('deleting.', form)
-
-        $('#deleteModal').modal('show')
-    }
-
-    $('#users-table').DataTable();
-</script>
-
-@endsection

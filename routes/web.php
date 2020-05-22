@@ -24,3 +24,12 @@ Route::get('/mentors', function () {
 Route::get('/mentees', function () {
     return view('frontend/mentees');
 });
+
+ Route::resource('mentorship-categories', 'MentorshipCategoriesController');
+
+ Route::resource('mentee-stages', 'MenteeStagesController');
+
+ 
+ Route::resource('mentors', 'MentorsController');
+
+
