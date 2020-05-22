@@ -13,6 +13,6 @@ class MentorsController extends Controller
         $mentors= Mentor::orderBy('first_name')->get()->toArray();
         $sn = 1;
 
-        return view('admin.mentors.index', compact('users', 'sn'));
+        return view('admin.mentors.index', compact('mentors', 'sn'));
     }
 }

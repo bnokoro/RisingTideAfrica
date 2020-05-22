@@ -8,30 +8,33 @@
 					Mentors!
 				</span>
 
-				<div class="wrap-input100 validate-input" data-validate="Name is required">
+				
+				 <div class="wrap-input100 validate-input" data-validate="Name is required">
 					<span class="label-input100">First Name</span>
 					<input class="input100" type="text" name="name" placeholder="Enter your first name">
 					<span class="focus-input100"></span>
 				</div> 
 
 				
-				<div class="wrap-input100 validate-input" data-validate="Name is required">
+				<div class="wrap-input100 validate-input" data-validate="Midddle Name is required">
+					<span class="label-input100">Middle Name</span>
+					<input class="input100" type="text" name="name" placeholder="Enter your middle name">
+					<span class="focus-input100"></span>
+				</div>
+
+				<div class="wrap-input100 validate-input" data-validate="Last Name is required">
 					<span class="label-input100">Last Name</span>
 					<input class="input100" type="text" name="name" placeholder="Enter your last name">
 					<span class="focus-input100"></span>
 				</div>
 
-				<div class="wrap-input100 validate-input" data-validate="Name is required">
+
+
+				<div class="wrap-input100 validate-input" data-validate="Phone Number is required">
 					<span class="label-input100">Phone Number</span>
 					<input class="input100" type="text" name="name" placeholder="Enter your phone number">
 					<span class="focus-input100"></span>
-				</div>
-				
-				<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-					<span class="label-input100">Email</span>
-					<input class="input100" type="text" name="email" placeholder="Enter your email addess">
-					<span class="focus-input100"></span>
-				</div>
+				</div>  
 
 				<div class="wrap-input100 input100-select">
 					<span class="label-input100">Mentorship Categories</span>

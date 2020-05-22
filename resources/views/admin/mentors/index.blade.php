@@ -1,4 +1,4 @@
-@extends('layouts.content_layout')
+@extends('backend.content_layout')
 
 @section('content')
 
@@ -31,22 +31,23 @@
                         <th>Full Name</th>
                         <th>E-Mail</th>
                         <th>Phone</th>
-                        <th>Mentorship Category</th>
                         <th>Day Choosen</th>
                         <th>Time Choosen</th>
+                        <th>Mentorship Category</th>
                         <th>Actions</th>
                     </thead>
 
                     <tbody>
-                        @foreach($users as $user)
+                        @foreach($mentors as $mentor)
                         <tr>
                             <td>{{$sn++}}</td>
-                            <td>{{$user->first_name . ' ' . $user->last_name . ' ' . $user->middle_name}}</td>
-                            <td>{{$user->email}}</td>
-                            <td>{{$user->phone}}</td>
-                            <td>{{$user->mentorship_category}}</td>
-                            <td>{{$user->day_choosen}}</td>
-                            <td>{{$user->time_choosen}}</td>
+                            <td>{{$mentor->first_name . ' ' . $mentor->last_name . ' ' . $mentor->middle_name}}</td>
+                            <td>{{$mentor->email}}</td>
+                            <td>{{$mentor->phone}}</td>
+                            <td>{{$mentor->day_choosen}}</td>
+                            <td>{{$mentor->time_choosen}}</td>
+                            <td>{{$mentor->mentorship_category}}</td>
+                            
                             <td style="text-align: center">
                                 <a href="#" class="btn btn-info btn-sm">
                                     View
@@ -54,7 +55,7 @@
                             <button
                              class="btn btn-danger btn-sm waves-effect waves-light delete-button"
                             data-toggle="modal"
-                             data-url="/mentor/{{$user->id}}"
+                             data-url="/mentor/{{$mentor->id}}"
                             data-target="#delete-mentor">
                             Delete
                             </button>
