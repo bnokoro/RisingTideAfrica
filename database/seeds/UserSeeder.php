@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
         $user = User::where('email', 'bee@gmail.com')->first();
     
 
-    if ($user) {
+    if (!$user) {
          User::create([
 
             'first_name' => 'bless',

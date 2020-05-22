@@ -1,4 +1,4 @@
-@extends('layouts.content_layout')
+@extends('backend.content_layout')
 
 @section('content')
 
@@ -13,7 +13,7 @@
         <div class="page-title-box">
             <h4 class="page-title">Mentee</h4>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
                 <li class="breadcrumb-item active"><a href="#">Mentee</a></li>
             </ol>
         </div>
@@ -31,24 +31,24 @@
                         <th>Full Name</th>
                         <th>E-Mail</th>
                         <th>Phone</th>
-                        <th>Mentorship Category</th> 
-                        <th>Mentorship Stage</th>
                         <th>Day Choosen</th>
                         <th>Time Choosen</th>
+                        <th>Mentorship Category</th> 
+                        <th>Mentorship Stage</th>
                         <th>Actions</th>
                     </thead>
 
                     <tbody>
-                        @foreach($users as $user)
+                        @foreach($mentees as $mentee)
                         <tr>
                             <td>{{$sn++}}</td>
-                            <td>{{$user->first_name . ' ' . $user->last_name . ' ' . $user->middle_name}}</td>
-                            <td>{{$user->email}}</td>
-                            <td>{{$user->phone}}</td>
-                            <td>{{$user->mentorship_category}}</td>
-                            <td>{{$user->mentee_stage}}</td>
-                            <td>{{$user->day_choosen}}</td>
-                            <td>{{$user->time_choosen}}</td>
+                            <td>{{$mentee->first_name . ' ' . $mentee->last_name  }}</td>
+                            <td>{{$mentee->email}}</td>
+                            <td>{{$mentee->phone}}</td>
+                            <td>{{$mentee->category_id}}</td>
+                            <td>{{$mentee->stage_id}}</td>
+                            <td>{{$mentee->day_choosen}}</td>
+                            <td>{{$mentee->time_choosen}}</td>
                             <td style="text-align: center">
                                 <a href="#" class="btn btn-info btn-sm">
                                     View
@@ -56,7 +56,7 @@
                             <button
                              class="btn btn-danger btn-sm waves-effect waves-light delete-button"
                             data-toggle="modal"
-                             data-url="/mentee/{{$user->id}}"
+                             data-url="/mentee/{{$mentee->id}}"
                             data-target="#delete-mentee">
                             Delete
                             </button>

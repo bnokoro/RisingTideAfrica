@@ -17,13 +17,13 @@ class CreateMenteesTable extends Migration
             $table->bigIncrements('id');
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('middle_name');
+            $table->string('middle_name')->nullable();
             $table->string('phone');
             $table->string('email')->unique();
-            $table->integer('category_id');
-            $table->integer('stage_id');
             $table->date('day_choosen');
             $table->date('time_choosen');
+            $table->integer('category_id');
+            $table->integer('stage_id');
             $table->timestamps();
         });
     }

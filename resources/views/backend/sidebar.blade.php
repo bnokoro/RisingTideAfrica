@@ -27,7 +27,7 @@
                         </a>
                     </li>
                      <li>
-                        <a href="/admin/startups" class="waves-effect">
+                        <a href="/mentees" class="waves-effect">
                             <i class="fas fa-users"></i>
                             <span> Mentees </span>
                         </a>
