@@ -2,7 +2,7 @@
 
  @section('content')
 
- 
+
 	 <div class="wrap-contact100">
 			<form class="contact100-form validate-form">
 				<span class="contact100-form-title">
@@ -13,9 +13,9 @@
 					<span class="label-input100">First Name</span>
 					<input class="input100" type="text" name="name" placeholder="Enter your first name">
 					<span class="focus-input100"></span>
-				</div> 
+				</div>
 
-				
+
 				<div class="wrap-input100 validate-input" data-validate="Midddle Name is required">
 					<span class="label-input100">Middle Name</span>
 					<input class="input100" type="text" name="name" placeholder="Enter your middle name">
@@ -34,7 +34,7 @@
 					<span class="label-input100">Phone Number</span>
 					<input class="input100" type="text" name="name" placeholder="Enter your phone number">
 					<span class="focus-input100"></span>
-				</div>  
+				</div>
 
 				<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
 					<span class="label-input100">Email</span>
@@ -42,13 +42,13 @@
 					<span class="focus-input100"></span>
 				</div>
 
-			
+
 				<div class="wrap-input100 input100-select">
 					<span class="label-input100">Mentorship Categories</span>
 					<div>
 						<select class="selection-2" name="category_id" required>
 						<option>Choose Category</option>
-					    @foreach ($categories as $category)
+					    @foreach($categories as $category)
                             <option value="{{$category->id}}">{{$category->name}}</option>
                         @endforeach
 						</select>
@@ -69,7 +69,7 @@
 					</div>
 					<span class="focus-input100"></span>
 				</div>
-			
+
 				<div class="input100-select">
 					<span class="label-input100">Day Available to be Mentored</span>
 					<div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
@@ -79,7 +79,7 @@
 					<span class="focus-input100"></span>
 				</div>
 
-				
+
            		 <input type="hidden" name="selected_date" id="selected_date_input">
 
 				<div class="wrap-input100 input100-select">

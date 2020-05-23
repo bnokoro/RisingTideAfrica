@@ -30,7 +30,7 @@ Route::get('/admin', function () {
 Route::get('/mentors', function () {
     $categories = App\Category::all();
 
-    return view('frontend/mentors', compact('categories', $categories));
+    return view('frontend/mentors', compact('categories'));
 });
 
 Route::post('/mentors', 'MentorsController@store');
@@ -39,7 +39,9 @@ Route::post('/check-email', 'UsersController@checkEmail');
 Route::post('/check-date', 'UsersController@checkDate');
 
 Route::get('/mentees', function () {
-    return view('frontend/mentees');
+
+    $categories = App\Category::all();
+    return view('frontend/mentees', compact('categories'));
 });
 
  Route::resource('mentorship-categories', 'MentorshipCategoriesController');
