@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\User;
 use App\Mentor;
 use Illuminate\Http\Request;
@@ -11,6 +12,8 @@ class MentorsController extends Controller
 {
     public function index()
     {
+        
+        $categories = Category::orderBy('name')->get()->toArray();
         $mentors = Mentor::orderBy('first_name')->get()->toArray();
         $sn = 1;
 

@@ -6,7 +6,7 @@
 	 <div class="wrap-contact100">
 			<form class="contact100-form validate-form">
 				<span class="contact100-form-title">
-					Mentees!
+					Mentees Sign Up!
 				</span>
 
 				 <div class="wrap-input100 validate-input" data-validate="Name is required">
@@ -46,12 +46,11 @@
 				<div class="wrap-input100 input100-select">
 					<span class="label-input100">Mentorship Categories</span>
 					<div>
-						<select class="selection-2" name="service">
-							<option>Choose Category</option>
-							<option>Finance</option>
-							<option>Health</option>
-							<option>Education</option>
-							<option>IT</option>
+						<select class="selection-2" name="category_id" required>
+						<option>Choose Category</option>
+					    @foreach ($categories as $category)
+                            <option value="{{$category->id}}">{{$category->name}}</option>
+                        @endforeach
 						</select>
 					</div>
 					<span class="focus-input100"></span>
@@ -61,19 +60,18 @@
 				<div class="wrap-input100 input100-select">
 					<span class="label-input100">Mentorship Stages</span>
 					<div>
-						<select class="selection-2" name="service">
-							<option>Choose Stage</option>
-							<option>Idea Stage</option>
-							<option>Seed Stage</option>
-							<option>Growth Stages</option>
-							<option>Development Stage</option>
-						</select>
+						<select class="selection-2" name="stage_id" required>
+                        <option>Choose Stages</option>
+                        @foreach($stages as $stage)
+                            <option value="{{$stage->id}}">{{$stage->name}}</option>
+                        @endforeach
+                    </select>
 					</div>
 					<span class="focus-input100"></span>
 				</div>
 			
 				<div class="input100-select">
-					<span class="label-input100">Day to be Mentored</span>
+					<span class="label-input100">Day Available to be Mentored</span>
 					<div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
 							<input class="form-control" type="text" readonly />
 							<span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
@@ -81,13 +79,14 @@
 					<span class="focus-input100"></span>
 				</div>
 
+				
+           		 <input type="hidden" name="selected_date" id="selected_date_input">
+
 				<div class="wrap-input100 input100-select">
-					<span class="label-input100">Time to be Mentored</span>
+					<span class="label-input100">Time Available to be Mentored</span>
 					<div>
-						<select class="selection-2" name="service">
-							<option>Choose Time</option>
-							<option>5 &mdash; 6pm </option>
-							<option>5 &mdash; 7pm </option>
+						<select class="selection-2"  name="time_choosen" required readonly>
+							<option value="5" selected>5 &mdash; 7pm </option>
 						</select>
 					</div>
 					<span class="focus-input100"></span>

@@ -80,7 +80,7 @@
                 <div>
                     <select class="selection-2" name="time_choosen" required readonly>
                         <option value="5" selected>5 &mdash; 7pm</option>
-                        {{--							<option value="6">5 &mdash; 7pm </option>--}}
+                        
                     </select>
                 </div>
                 <span class="focus-input100"></span>

@@ -12,4 +12,10 @@ class Category extends Model
     {
         return $this->hasMany('App\Mentor');
     }
+
+    
+     public function mentee() 
+    {
+        return $this->hasMany('App\Mentee');
+    }
 }

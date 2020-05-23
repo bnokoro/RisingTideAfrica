@@ -47,8 +47,8 @@ Route::get('/mentees', function () {
  Route::resource('mentee-stages', 'MenteeStagesController');
 
 
-//  Route::resource('mentors', 'MentorsController');
+ Route::resource('mentors-back', 'MentorsController');
 
-//  Route::resource('mentees', 'MenteesController');
+ Route::resource('mentees-back', 'MenteesController');
 
 
