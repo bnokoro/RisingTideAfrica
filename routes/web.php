@@ -1,25 +1,16 @@
 <?php
 
 use Illuminate\Http\Request;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+
 // Route::get('/', function () {
 //     return view('test');
 // });
 
 // Route::post('/', function (Request $request) {
-    
+
 //     $path = $request->file('file')->getRealPath();
 //     $data = array_map('str_getcsv', file($path));
-    
+
 //     foreach ($data as $user) {
 //         App\User::create([
 //             'first_name' => $user[0],
@@ -45,6 +36,7 @@ Route::get('/mentors', function () {
 Route::post('/mentors', 'MentorsController@store');
 
 Route::post('/check-email', 'UsersController@checkEmail');
+Route::post('/check-date', 'UsersController@checkDate');
 
 Route::get('/mentees', function () {
     return view('frontend/mentees');
@@ -54,10 +46,9 @@ Route::get('/mentees', function () {
 
  Route::resource('mentee-stages', 'MenteeStagesController');
 
- 
- Route::resource('mentors-back', 'MentorsController');
 
- 
- Route::resource('mentees-back', 'MenteesController');
+//  Route::resource('mentors', 'MentorsController');
+
+//  Route::resource('mentees', 'MenteesController');
 
 
