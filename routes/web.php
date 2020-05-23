@@ -50,14 +50,14 @@ Route::get('/mentees', function () {
     return view('frontend/mentees');
 });
 
-//  Route::resource('mentorship-categories', 'MentorshipCategoriesController');
+ Route::resource('mentorship-categories', 'MentorshipCategoriesController');
 
-//  Route::resource('mentee-stages', 'MenteeStagesController');
-
- 
-//  Route::resource('mentors', 'MentorsController');
+ Route::resource('mentee-stages', 'MenteeStagesController');
 
  
-//  Route::resource('mentees', 'MenteesController');
+ Route::resource('mentors-back', 'MentorsController');
+
+ 
+ Route::resource('mentees-back', 'MenteesController');
 
 

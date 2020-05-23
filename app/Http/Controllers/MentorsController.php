@@ -22,6 +22,7 @@ class MentorsController extends Controller
         $message = 'Mentor deleted successfully';
 
         $mentor->delete();
+        
 
         return redirect()->back()->with('success', $message);
     }

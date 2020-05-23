@@ -21,13 +21,13 @@
 
                     <li class="menu-title">Users</li>
                     <li>
-                        <a href="/mentors" class="waves-effect">
+                        <a href="/mentors-back" class="waves-effect">
                             <i class="fas fa-users"></i>
                             <span> Mentors </span>
                         </a>
                     </li>
                      <li>
-                        <a href="/mentees" class="waves-effect">
+                        <a href="/mentees-back" class="waves-effect">
                             <i class="fas fa-users"></i>
                             <span> Mentees </span>
                         </a>

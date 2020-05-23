@@ -41,12 +41,12 @@
                         @foreach($mentors as $mentor)
                         <tr>
                             <td>{{$sn++}}</td>
-                            <td>{{$mentor->first_name . ' ' . $mentor->last_name }}</td>
-                            <td>{{$mentor->email}}</td>
-                            <td>{{$mentor->phone}}</td>
-                            <td>{{$mentor->day_choosen}}</td>
-                            <td>{{$mentor->time_choosen}}</td>
-                            <td>{{$mentor->category_id}}</td>
+                            <td>{{$mentor['first_name' ]. ' ' . $mentor['last_name'] }}</td>
+                            <td>{{$mentor['email']}}</td>
+                            <td>{{$mentor['phone']}}</td>
+                            <td>{{$mentor['day_choosen']}}</td>
+                            <td>{{$mentor['time_choosen']}}</td>
+                            <td>{{$mentor['category_id']}}</td>
                             
                             <td style="text-align: center">
                                 <a href="#" class="btn btn-info btn-sm">
@@ -55,7 +55,7 @@
                             <button
                              class="btn btn-danger btn-sm waves-effect waves-light delete-button"
                             data-toggle="modal"
-                             data-url="/mentor/{{$mentor->id}}"
+                             data-url="/mentor/{{$mentor['id']}}"
                             data-target="#delete-mentor">
                             Delete
                             </button>

@@ -42,13 +42,14 @@
                         @foreach($mentees as $mentee)
                         <tr>
                             <td>{{$sn++}}</td>
-                            <td>{{$mentee->first_name . ' ' . $mentee->last_name  }}</td>
-                            <td>{{$mentee->email}}</td>
-                            <td>{{$mentee->phone}}</td>
-                            <td>{{$mentee->category_id}}</td>
-                            <td>{{$mentee->stage_id}}</td>
-                            <td>{{$mentee->day_choosen}}</td>
-                            <td>{{$mentee->time_choosen}}</td>
+                            <td>{{$mentee['first_name'] . ' ' . $mentee['last_name'] }}</td>
+                            <td>{{$mentee['email']}}</td>
+                            <td>{{$mentee['phone']}}</td>
+                            <td>{{$mentee['day_choosen']}}</td>
+                            <td>{{$mentee['time_choosen']}}</td>
+                            <td>{{$mentee['category_id']}}</td>
+                            <td>{{$mentee['stage_id']}}</td>
+                            
                             <td style="text-align: center">
                                 <a href="#" class="btn btn-info btn-sm">
                                     View
@@ -56,7 +57,7 @@
                             <button
                              class="btn btn-danger btn-sm waves-effect waves-light delete-button"
                             data-toggle="modal"
-                             data-url="/mentee/{{$mentee->id}}"
+                             data-url="/mentee/{{$mentee['id']}}"
                             data-target="#delete-mentee">
                             Delete
                             </button>

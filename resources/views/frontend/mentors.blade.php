@@ -75,8 +75,8 @@
 					<span class="label-input100">Time Available to Mentor</span>
 					<div>
 						<select class="selection-2" name="time_choosen">
-							<option>Choose Time</option>
-							<option value="5">5 &mdash; 6pm </option>
+							{{-- <option>Choose Time</option> --}}
+							{{-- <option value="5">5 &mdash; 6pm </option> --}}
 							<option value="6">5 &mdash; 7pm </option>
 						</select>
 					</div>
