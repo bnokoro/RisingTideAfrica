@@ -9,9 +9,9 @@ use Carbon\Carbon;
 
 class MentorsController extends Controller
 {
-       public function index()
+    public function index()
     {
-        $mentors= Mentor::orderBy('first_name')->get()->toArray();
+        $mentors = Mentor::orderBy('first_name')->get()->toArray();
         $sn = 1;
 
         return view('admin.mentors.index', compact('mentors', 'sn'));
@@ -38,20 +38,23 @@ class MentorsController extends Controller
             'day_choosen' => 'required',
         ]);
 
-      
+        if (Mentor::whereEmail($request->email)->exists()) {
+            return redirect()->back()->with('error', 'You\'ve registered before.');
+        }
+
+        $day_choosen = Carbon::createFromFormat('m/d/Y', $request->selected_date)->format('Y-m-d');
 
         if (
-            Mentor::whereCategoryId($request->category_id)
-            ->whereDayChoosen($request->day_choosen)
-            ->whereTimeChoosen($request->time_choosen)
+        Mentor::whereDayChoosen($day_choosen)
             ->exists()
-            ) {
-                return redirect()->back()->with('error', 'Select Day and Time has been booked!');
-            }
+        ) {
+            return redirect()->back()->with('error', 'Selected Day has been booked!');
+        }
 
-        Mentor::create($request->except('day_choosen') + [
-            'day_choosen' => Carbon::createFromFormat('d-m-Y', $request->day_choosen)->format('Y-m-d')
-        ]);
+        Mentor::create($request->except('day_choosen', 'time_choosen') + [
+                'day_choosen' => $day_choosen,
+                'time_choosen' => 5
+            ]);
 
         return redirect()->back()->with('success', 'Booking Created');
     }

@@ -2105,7 +2105,17 @@ process.umask = function() { return 0; };
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
- // Pass id to delete modal
+ // Init Bootstrap Datepicker
+
+$(function () {
+  $("#datepicker").datepicker({
+    autoclose: true,
+    todayHighlight: true,
+    format: "yy-mm-dd",
+    startDate: new Date('2020-6-01'),
+    endDate: new Date('2020-6-30')
+  }).datepicker('update', new Date());
+}); // Pass id to delete modal
 
 $('.delete-button').on('click', function (event) {
   event.preventDefault();
@@ -2116,25 +2126,59 @@ $('.delete-button').on('click', function (event) {
 var inputs = $('.other-inputs'); // Hide all inputs except email
 
 inputs.hide();
-$('#mentor-email').on('blur', function (event) {
-  event.preventDefault();
-  inputs.hide();
-  var email = $(this).val();
+$('#email-error').hide();
+$('#mentor-email').bind('blur keypress', function (e) {
+  $('#email-error').hide();
 
-  if (!email) {
-    return;
-  }
+  if (e.type == 'blur' || e.keyCode == 13) {
+    e.preventDefault();
+    inputs.hide();
+    var email = $(this).val();
 
-  axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('check-email', {
-    email: email
-  }).then(function (response) {
-    if (response.data === true) {
-      console.log('here');
-      inputs.show();
-    } else {
-      inputs.hide();
+    if (!email) {
+      $('#email-error').show();
+      return;
     }
-  });
+
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('check-email', {
+      email: email
+    }).then(function (response) {
+      if (response.data.status === true) {
+        var user = response.data.user;
+        inputs.show();
+        $('[name="first_name"]').val(user.first_name);
+        $('[name="last_name"]').val(user.last_name);
+      } else {
+        inputs.hide();
+        $('#email-error').show();
+      }
+    });
+  }
+});
+$('#date-error').hide();
+$('.day_choosen_mentor').datepicker({
+  autoclose: true,
+  todayHighlight: true,
+  format: "yy-mm-dd",
+  startDate: new Date('2020-6-01'),
+  endDate: new Date('2020-6-30')
+}).on('changeDate', function (e) {
+  $('#date-error').hide();
+  var selectedDate = new Date(Date.parse(e.date)).toLocaleDateString();
+  $('#selected_date_input').val(selectedDate);
+
+  if (selectedDate) {
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('check-date', {
+      selectedDate: selectedDate
+    }).then(function (response) {
+      if (response.data.slot_exists) {
+        $('#date-error').show();
+        $('.mentor-submit').attr('disabled', "true");
+      } else {
+        $('.mentor-submit').removeAttr('disabled');
+      }
+    });
+  }
 });
 
 /***/ }),

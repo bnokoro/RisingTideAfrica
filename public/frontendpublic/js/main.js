@@ -13,15 +13,8 @@
             else {
                 $(this).removeClass('has-val');
             }
-        })    
+        })
     })
-  
-    $(function () {
-        $("#datepicker").datepicker({
-            autoclose: true,
-            todayHighlight: true
-        }).datepicker('update', new Date());
-    });
 
     /*==================================================================
     [ Validate ]*/
@@ -70,7 +63,7 @@
 
         $(thisAlert).removeClass('alert-validate');
     }
-    
-    
+
+
 
 })(jQuery);
