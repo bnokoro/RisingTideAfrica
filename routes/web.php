@@ -22,6 +22,11 @@ use Illuminate\Http\Request;
 //     return 'done';
 // });
 
+Route::get('/', function () {
+    \Illuminate\Support\Facades\Mail::to('dj3plles@gmail.com')->send(new \App\Mail\MentorAssigned(\App\Mentee::first(), \App\Mentor::first()));
+    return 'sent';
+});
+
 Route::get('/admin', function () {
     return view('backend/content_layout');
 });

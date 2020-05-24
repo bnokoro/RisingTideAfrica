@@ -85,6 +85,7 @@ $('.day_choosen_mentee').datepicker({
 })
     .on('changeDate', function (e) {
         $('#date-error').hide();
+        $('[name="time_choosen"]').val('');
         const selectedDate = new Date(Date.parse(e.date)).toLocaleDateString();
         $('#selected_date_input').val(selectedDate);
         if (selectedDate) {
@@ -100,6 +101,16 @@ $('.day_choosen_mentee').datepicker({
                         $('.mentee-submit').attr('disabled', "true");
                     } else {
                         $('.mentee-submit').removeAttr('disabled');
+                        const timeChoosen = response.data.time_choosen;
+                        if (timeChoosen) {
+                            let time = '';
+                            if (timeChoosen == 5) {
+                                time = '5pm - 6pm';
+                            } else if (timeChoosen == 6) {
+                                time = '6pm - 7pm';
+                            }
+                            $('[name="time_choosen"]').val(time);
+                        }
                     }
                 }
             })
