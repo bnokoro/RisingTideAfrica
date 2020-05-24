@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Mail\MentorAssigned;
 use App\Mentor;
 use App\User;
 use App\Mentee;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
 
 class MenteesController extends Controller
 {
@@ -31,7 +33,6 @@ class MenteesController extends Controller
 
     public function store(Request $request)
     {
-
         $request->validate([
             'email' => 'required',
             'first_name' => 'required',
@@ -51,7 +52,6 @@ class MenteesController extends Controller
             return redirect()->back()->with('error', 'You\'ve registered before.');
         }
 
-
         $day_choosen = Carbon::createFromFormat('m/d/Y', $request->selected_date)->format('Y-m-d');
 
         if ( Mentee::whereDayChoosen($day_choosen)->exists()) {
@@ -67,10 +67,12 @@ class MenteesController extends Controller
 
         $mentee = Mentee::create($request->except('day_choosen', 'time_choosen') + [
                 'day_choosen' => $day_choosen,
-                'time_choosen' => 5,
+                'time_choosen' => mb_substr($request->time_choosen, 0, 1)
             ]);
 
         $mentor->update(['mentee_id' => $mentee->id]);
+
+        Mail::to($mentor->email)->send(new MentorAssigned($mentee, $mentor));
 
         return redirect()->back()->with('success', 'Booking Created');
     }

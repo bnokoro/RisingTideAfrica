@@ -34,13 +34,11 @@
                 <span class="focus-input100"></span>
             </div>
 
-
             <div class="wrap-input100 validate-input other-inputs" data-validate="Last Name is required">
                 <span class="label-input100">Last Name</span>
                 <input class="input100" type="text" name="last_name" placeholder="Enter your last name" readonly required>
                 <span class="focus-input100"></span>
             </div>
-
 
             <div class="wrap-input100 validate-input other-inputs" data-validate="Phone Number is required">
                 <span class="label-input100">Phone Number</span>
@@ -53,7 +51,7 @@
                 <span class="label-input100">Mentorship Categories</span>
                 <div>
                     <select class="selection-2" name="category_id" required>
-                        <option>Choose Category</option>
+                        <option value="">Choose Category</option>
                         @foreach($categories as $category)
                             <option value="{{$category->id}}">{{$category->name}}</option>
                         @endforeach
@@ -79,8 +77,9 @@
                 <span class="label-input100">Time Available to Mentor</span>
                 <div>
                     <select class="selection-2" name="time_choosen" required readonly>
-                        <option value="5" selected>5 &mdash; 7pm</option>
-
+                        <option value="">Choose Time</option>
+                        <option value="5">5 &mdash; 6pm </option>
+                        <option value="6">6 &mdash; 7pm </option>
                     </select>
                 </div>
                 <span class="focus-input100"></span>

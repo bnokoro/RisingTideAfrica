@@ -12,7 +12,7 @@ class MentorsController extends Controller
 {
     public function index()
     {
-        
+
         $categories = Category::orderBy('name')->get()->toArray();
         $mentors = Mentor::orderBy('first_name')->get()->toArray();
         $sn = 1;
@@ -25,7 +25,7 @@ class MentorsController extends Controller
         $message = 'Mentor deleted successfully';
 
         $mentor->delete();
-        
+
 
         return redirect()->back()->with('success', $message);
     }
@@ -55,9 +55,8 @@ class MentorsController extends Controller
             return redirect()->back()->with('error', 'Selected Day has been booked!');
         }
 
-        Mentor::create($request->except('day_choosen', 'time_choosen') + [
-                'day_choosen' => $day_choosen,
-                'time_choosen' => 5
+        Mentor::create($request->except('day_choosen') + [
+                'day_choosen' => $day_choosen
             ]);
 
         return redirect()->back()->with('success', 'Booking Created');

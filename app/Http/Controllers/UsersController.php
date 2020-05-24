@@ -30,10 +30,14 @@ class UsersController extends Controller
     {
         $date = Carbon::createFromFormat('m/d/Y', $request->selectedDate)->format('Y-m-d');
 
-        if (!Mentor::whereDayChoosen($date)->exists()) {
+        $mentor = Mentor::whereDayChoosen($date);
+
+        if (!$mentor->exists()) {
             return response()->json(['mentor_exists' => false]);
         }
 
-        return response()->json(['slot_exists' => Mentee::whereDayChoosen($date)->exists(), 'mentor_exists' => true]);
+        $time_choosen = $mentor->first()->time_choosen;
+
+        return response()->json(['slot_exists' => Mentee::whereDayChoosen($date)->exists(), 'mentor_exists' => true, 'time_choosen' => $time_choosen]);
     }
 }

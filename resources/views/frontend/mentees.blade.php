@@ -89,7 +89,7 @@
                 <span class="label-input100">Mentorship Stages</span>
                 <div>
                     <select class="selection-2 mentorship-stage-select" name="stage_id" required>
-                        <option>Choose Stages</option>
+                        <option value="">Choose Stages</option>
                         @foreach($stages as $stage)
                             <option value="{{$stage->id}}">{{$stage->name}}</option>
                         @endforeach
@@ -119,11 +119,7 @@
 
             <div class="wrap-input100 input100-select">
                 <span class="label-input100">Time Available to be Mentored</span>
-                <div>
-                    <select class="selection-2" name="time_choosen" required readonly>
-                        <option value="5" selected>5 &mdash; 7pm</option>
-                    </select>
-                </div>
+                <input class="input100" type="text" name="time_choosen" required readonly>
                 <span class="focus-input100"></span>
                 @error('time_choosen')
                 <span class="text-danger">{{ $message }}</span>
