@@ -58,3 +58,5 @@ Route::post('/mentees', 'MenteesController@store');
  Route::resource('mentees-back', 'MenteesController');
 
 
+//  Route::resource('admins', 'AdminsController');
+

@@ -23,7 +23,7 @@ class CreateMentorsTable extends Migration
             $table->integer('category_id');
             $table->integer('mentee_id')->nullable();
             $table->date('day_choosen');
-            $table->date('time_choosen');
+            $table->integer('time_choosen');
             $table->timestamps();
         });
     }

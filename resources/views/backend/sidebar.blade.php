@@ -12,13 +12,7 @@
                         </a>
                     </li>
 
-                     <li>
-                        <a href="/admin/settings" class="waves-effect">
-                            <i class="fas fa-wrench"></i>
-                            <span> Cms </span>
-                        </a>
-                    </li>
-
+                 
                     <li class="menu-title">Users</li>
                     <li>
                         <a href="/mentors-back" class="waves-effect">
@@ -43,6 +37,12 @@
                         <a href="/mentee-stages" class="waves-effect">
                             <i class="fas fa-book"></i>
                             <span> Mentee Stages </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/admins" class="waves-effect">
+                            <i class="fas fa-users"></i>
+                            <span> Admins </span>
                         </a>
                     </li>
                 </ul>

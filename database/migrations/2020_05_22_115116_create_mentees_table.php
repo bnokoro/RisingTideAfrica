@@ -21,7 +21,7 @@ class CreateMenteesTable extends Migration
             $table->string('phone');
             $table->string('email')->unique();
             $table->date('day_choosen');
-            $table->date('time_choosen');
+            $table->integer('time_choosen');
             $table->integer('category_id');
             $table->integer('stage_id');
             $table->timestamps();
