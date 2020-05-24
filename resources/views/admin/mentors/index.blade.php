@@ -34,6 +34,7 @@
                         <th>Day Choosen</th>
                         <th>Time Choosen</th>
                         <th>Mentorship Category</th>
+                        <th>Mentor's Mentee</th>
                         <th>Actions</th>
                     </thead>
 
@@ -47,7 +48,7 @@
                             <td>{{$mentor['day_choosen']}}</td>
                             <td>{{$mentor['time_choosen']}}</td>
                             <td>{{$mentor['category_id']}}</td>
-                            
+                            <td>{{$mentor['mentee_id']}}</td>
                             <td style="text-align: center">
                                 <a href="#" class="btn btn-info btn-sm">
                                     View

@@ -30,16 +30,40 @@ class MenteesController extends Controller
 
       public function store(Request $request)
     {
-        $request->validate([
-            'email' => 'required',
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'phone' => 'required',
-            'category_id' => 'required',
-            'stage_id' => 'required',
-            'time_choosen' => 'required',
-            'day_choosen' => 'required',
-        ]);
+        
+        // $request->validate([
+        //     'email' => 'required',
+        //     'first_name' => 'required',
+        //     'last_name' => 'required',
+        //     'phone' => 'required',
+        //     'category_id' => 'required',
+        //     'stage_id' => 'required',
+        //     'time_choosen' => 'required',
+        //     'day_choosen' => 'required',
+        // ]);
 
+        // //  if (Mentee::whereEmail($request->email)->exists()) {
+        // //     return redirect()->back()->with('error', 'You\'ve registered before.');
+        // // // }
+
+        // $day_choosen = Carbon::createFromFormat('m/d/Y', $request->day_choosen)->format('Y-m-d');
+
+        // if (
+        // Mentee::whereDayChoosen($day_choosen)
+        //     ->exists()
+        // ) {
+        //     return redirect()->back()->with('error', 'Selected Day has been booked!');
+        // }
+
+        // Mentee::create($request->except('day_choosen', 'time_choosen') + [
+        //         'day_choosen' => $day_choosen,
+        //         'time_choosen' => 5
+        //     ]);
+
+            
+        // $mentee = Mentee::create($request->all());
+
+        return redirect()->back()->with('success', 'Booking Created');
+        // return ($request->all());
     }
 }

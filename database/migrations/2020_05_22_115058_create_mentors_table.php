@@ -21,6 +21,7 @@ class CreateMentorsTable extends Migration
             $table->string('phone');
             $table->string('email')->unique();
             $table->integer('category_id');
+            $table->integer('mentee_id')->nullable();
             $table->date('day_choosen');
             $table->date('time_choosen');
             $table->timestamps();

@@ -41,8 +41,12 @@ Route::post('/check-date', 'UsersController@checkDate');
 Route::get('/mentees', function () {
 
     $categories = App\Category::all();
-    return view('frontend/mentees', compact('categories'));
+    $stages = App\Stage::all();
+    return view('frontend/mentees', compact('categories','stages'));
 });
+
+
+Route::post('/mentees', 'MenteesController@store');
 
  Route::resource('mentorship-categories', 'MentorshipCategoriesController');
 
