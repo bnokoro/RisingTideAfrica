@@ -75,3 +75,42 @@ $('.day_choosen_mentor').datepicker({
             })
         }
     });
+
+$('.day_choosen_mentee').datepicker({
+    autoclose: true,
+    todayHighlight: true,
+    format: "yy-mm-dd",
+    startDate: new Date('2020-6-01'),
+    endDate: new Date('2020-6-30')
+})
+    .on('changeDate', function (e) {
+        $('#date-error').hide();
+        const selectedDate = new Date(Date.parse(e.date)).toLocaleDateString();
+        $('#selected_date_input').val(selectedDate);
+        if (selectedDate) {
+            Axios.post('check-date-mentee', {selectedDate}).then(response => {
+                if (!response.data.mentor_exists) {
+                    $('#date-error').text('There is no available mentor for selected date. Please choose another');
+                    $('#date-error').show();
+                    $('.mentee-submit').attr('disabled', "true");
+                } else {
+                    if (response.data.slot_exists) {
+                        $('#date-error').text('Slot is occupied. Choose another date.');
+                        $('#date-error').show();
+                        $('.mentee-submit').attr('disabled', "true");
+                    } else {
+                        $('.mentee-submit').removeAttr('disabled');
+                    }
+                }
+            })
+        }
+    });
+
+$('#stage-error').hide();
+$('.mentorship-stage-select').on('change', function () {
+    $('#stage-error').hide();
+    console.log($(this).val());
+    if ($(this).val() === '1') {
+        $('#stage-error').show();
+    }
+});

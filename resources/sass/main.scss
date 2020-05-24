@@ -1,7 +1,7 @@
 .input-group.date {
     margin: 0 20px 20px 0 !important;
     width: 100% !important;
-    padding-bottom: 20px !important;
+    padding-bottom: 4px !important;
     border-bottom: 2px solid #d9d9d9 !important;
 
     input.form-control {
@@ -35,4 +35,9 @@
 .session-alert {
     position: absolute;
     top: 20px;
+}
+
+.wrap-input100 {
+    padding-bottom: 3px!important;
+    margin-bottom: 18px!important;
 }

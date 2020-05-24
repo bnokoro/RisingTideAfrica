@@ -67,7 +67,7 @@
                 <div id="datepicker" class="input-group date day_choosen_mentor" data-date-format="mm-dd-yyyy">
                     <input class="form-control" id="day_choosen_mentor" name="day_choosen" type="text" readonly/>
                     <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                <span id="date-error" class="date-error text-danger">Slot is occupied. Choose another date.</span>
+                    <span id="date-error" class="date-error text-danger">Slot is occupied. Choose another date.</span>
                 </div>
                 <span class="focus-input100"></span>
 
@@ -80,7 +80,7 @@
                 <div>
                     <select class="selection-2" name="time_choosen" required readonly>
                         <option value="5" selected>5 &mdash; 7pm</option>
-                        
+
                     </select>
                 </div>
                 <span class="focus-input100"></span>

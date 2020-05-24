@@ -37,6 +37,7 @@ Route::post('/mentors', 'MentorsController@store');
 
 Route::post('/check-email', 'UsersController@checkEmail');
 Route::post('/check-date', 'UsersController@checkDate');
+Route::post('/check-date-mentee', 'UsersController@checkDateMentee');
 
 Route::get('/mentees', function () {
 
