@@ -14,6 +14,14 @@
 
                  
                     <li class="menu-title">Users</li>
+                    @if(auth()->user()->isAdmin())
+                    <li>
+                        <a href="/users" class="waves-effect">
+                            <i class="fas fa-users"></i>
+                            <span> Users </span>
+                        </a>
+                    </li>
+                    @endif
                     <li>
                         <a href="/mentors-back" class="waves-effect">
                             <i class="fas fa-users"></i>

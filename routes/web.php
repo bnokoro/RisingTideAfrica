@@ -22,13 +22,18 @@ use Illuminate\Http\Request;
 //     return 'done';
 // });
 
-Route::get('/', function () {
-    \Illuminate\Support\Facades\Mail::to('dj3plles@gmail.com')->send(new \App\Mail\MentorAssigned(\App\Mentee::first(), \App\Mentor::first()));
-    return 'sent';
-});
+// Route::get('/', function () {
+//     \Illuminate\Support\Facades\Mail::to('dj3plles@gmail.com')->send(new \App\Mail\MentorAssigned(\App\Mentee::first(), \App\Mentor::first()));
+//     return 'sent';
+// });
+
+// Route::get('/', function () {
+//        return \Illuminate\Support\Facades\Hash::make('asdfghjkl');
+//         return redirect('admin');
+// })->name('admin');
 
 Route::get('/admin', function () {
-    return view('backend/content_layout');
+    return view('home');
 });
 
 
@@ -64,5 +69,10 @@ Route::post('/mentees', 'MenteesController@store');
  Route::resource('mentees-back', 'MenteesController');
 
 
-//  Route::resource('admins', 'AdminsController');
+ Route::resource('admins', 'AdminsController');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+// 

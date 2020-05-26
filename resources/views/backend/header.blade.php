@@ -60,7 +60,7 @@
                             <i
                                 class="fa fa-cog m-r-5"></i> Account Settings</a>
                         <div class="dropdown-divider"></div>
-                        {{-- <a class="dropdown-item text-danger" href="{{ route('logout') }}"
+                        <a class="dropdown-item text-danger" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                             <i class="fa fa-key text-danger"></i>
@@ -69,7 +69,7 @@
 
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
-                        </form> --}}
+                        </form>
                     </div>
                 </div>
             </li>
