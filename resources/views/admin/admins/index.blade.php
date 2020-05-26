@@ -51,7 +51,7 @@
                                 </td>
 
                                 <td>
-                                    {{$admin->first_name . ' ' . $admin->last_name }}
+                                    {{$admin->name }}
                                 </td>
 
                                 <td>

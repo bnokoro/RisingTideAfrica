@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Admin;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -9,7 +10,7 @@ class AdminsController extends Controller
 {
    public function index()
     {
-        $admins = User::onlyAdmins()->get();
+        $admins = Admin::latest()->get();
         $sn = 1;
 
         return view('admin.admins.index', compact('admins', 'sn'));
