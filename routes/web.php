@@ -32,9 +32,24 @@ use Illuminate\Http\Request;
 //         return redirect('admin');
 // })->name('admin');
 
-Route::get('/admin', function () {
-    return view('home');
+Route::prefix('admin')->group(function () {
+    Route::get('/', function () {
+        return view('home');
+    });
+
+    Route::resource('mentorship-categories', 'MentorshipCategoriesController');
+
+    Route::resource('mentee-stages', 'MenteeStagesController');
+
+
+    Route::resource('mentors-back', 'MentorsController');
+
+    Route::resource('mentees-back', 'MenteesController');
+
+
+    Route::resource('admins', 'AdminsController');
 });
+
 
 
 Route::get('/mentors', function () {
@@ -59,20 +74,10 @@ Route::get('/mentees', function () {
 
 Route::post('/mentees', 'MenteesController@store');
 
- Route::resource('mentorship-categories', 'MentorshipCategoriesController');
 
- Route::resource('mentee-stages', 'MenteeStagesController');
-
-
- Route::resource('mentors-back', 'MentorsController');
-
- Route::resource('mentees-back', 'MenteesController');
-
-
- Route::resource('admins', 'AdminsController');
 
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-// 
+//

@@ -25,13 +25,13 @@ class MentorshipCategoriesController extends Controller
 
         $category = Category::create($request->all());
 
-        return redirect('mentorship-categories')->with('success', $category->name . ' category created successfully!');
+        return redirect('/admin/mentorship-categories')->with('success', $category->name . ' category created successfully!');
     }
 
     public function create()
     {
         $category = null;
-        $action = '/mentorship-categories';
+        $action = '/admin/mentorship-categories';
         return view('admin.mentorship-categories.create', compact('category', 'action'));
     }
 
@@ -43,7 +43,7 @@ class MentorshipCategoriesController extends Controller
     public function edit(Category $mentorship_category)
     {
         $category = $mentorship_category;
-        $action = '/mentorship-categories/' . $mentorship_category->id;
+        $action = '/admin/mentorship-categories/' . $mentorship_category->id;
 
         return view('admin.mentorship-categories.create', compact('category', 'action'));
     }
@@ -55,7 +55,7 @@ class MentorshipCategoriesController extends Controller
         $request->validate(['name' => 'required']);
         $mentorship_category->update(['name' => $request->name]);
 
-        return redirect('mentorship-categories')->with('success', $message);
+        return redirect('/admin/mentorship-categories')->with('success', $message);
     }
 
     public function destroy(Category $category)

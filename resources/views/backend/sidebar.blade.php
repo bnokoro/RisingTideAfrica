@@ -12,37 +12,37 @@
                         </a>
                     </li>
 
-                 
+
                     <li class="menu-title">Users</li>
-                    @if(auth()->user()->isAdmin())
+{{--                    @if(auth()->user()->isAdmin())--}}
                     <li>
-                        <a href="/users" class="waves-effect">
+                        <a href="/admin/users" class="waves-effect">
                             <i class="fas fa-users"></i>
                             <span> Users </span>
                         </a>
                     </li>
-                    @endif
+{{--                    @endif--}}
                     <li>
-                        <a href="/mentors-back" class="waves-effect">
+                        <a href="/admin/mentors-back" class="waves-effect">
                             <i class="fas fa-users"></i>
                             <span> Mentors </span>
                         </a>
                     </li>
                      <li>
-                        <a href="/mentees-back" class="waves-effect">
+                        <a href="/admin/mentees-back" class="waves-effect">
                             <i class="fas fa-users"></i>
                             <span> Mentees </span>
                         </a>
                     </li>
 
                     <li>
-                        <a href="/mentorship-categories" class="waves-effect">
+                        <a href="/admin/mentorship-categories" class="waves-effect">
                             <i class="fas fa-book"></i>
                             <span> Mentorship Categories </span>
                         </a>
                     </li>
                      <li>
-                        <a href="/mentee-stages" class="waves-effect">
+                        <a href="/admin/mentee-stages" class="waves-effect">
                             <i class="fas fa-book"></i>
                             <span> Mentee Stages </span>
                         </a>

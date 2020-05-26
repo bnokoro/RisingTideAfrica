@@ -25,13 +25,13 @@ class MenteeStagesController extends Controller
 
         $stage = Stage::create($request->all());
 
-        return redirect('mentee-stages')->with('success', $stage->name . 'Mentee Stage created successfully!');
+        return redirect('/admin/mentee-stages')->with('success', $stage->name . 'Mentee Stage created successfully!');
     }
 
     public function create()
     {
         $stage = null;
-        $action = '/mentee-stages';
+        $action = '/admin/mentee-stages';
         return view('admin.mentee-stages.create', compact('stage', 'action'));
     }
 
@@ -43,7 +43,7 @@ class MenteeStagesController extends Controller
     public function edit(Stage $mentee_stage)
     {
         $stage = $mentee_stage;
-        $action = '/mentee-stages/' . $mentee_stage->id;
+        $action = '/admin/mentee-stages/' . $mentee_stage->id;
 
         return view('admin.mentee-stages.create', compact('stage', 'action'));
     }
@@ -55,7 +55,7 @@ class MenteeStagesController extends Controller
         $request->validate(['name' => 'required']);
         $mentee_stage->update(['name' => $request->name]);
 
-        return redirect('mentee-stages')->with('success', $message);
+        return redirect('/admin/mentee-stages')->with('success', $message);
     }
 
     public function destroy(Stage $stage)
