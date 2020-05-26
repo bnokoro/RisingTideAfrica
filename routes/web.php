@@ -46,6 +46,9 @@ Route::prefix('admin')->group(function () {
 
     Route::resource('mentees-back', 'MenteesController');
 
+    Route::get('users', 'UsersController@index');
+    
+    Route::delete('users/{user}', 'UsersController@destroy');
 
     Route::resource('admins', 'AdminsController');
 });

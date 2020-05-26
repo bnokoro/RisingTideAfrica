@@ -37,8 +37,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function isAdmin()
+    // public function isAdmin()
+    // {
+    //     return $this->role == 'admin';
+    // }
+    public function mentor()
     {
-        return $this->role == 'admin';
+        return $this->belongsTo(Mentor::class);
+    }
+
+    public function mentee()
+    {
+        return $this->belongsTo(Mentee::class);
     }
 }

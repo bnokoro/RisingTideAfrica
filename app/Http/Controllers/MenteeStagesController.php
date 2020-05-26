@@ -58,10 +58,10 @@ class MenteeStagesController extends Controller
         return redirect('/admin/mentee-stages')->with('success', $message);
     }
 
-    public function destroy(Stage $stage)
+    public function destroy(Stage $mentee_stage)
     {
-        $message = $stage->name . ' mentee stage has been deleted!';
-        $stage->delete();
+        $message = $mentee_stage->name . ' mentee stage has been deleted!';
+        $mentee_stage->delete();
 
         return redirect()->back()->with('success', $message);
     }

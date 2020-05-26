@@ -14,16 +14,10 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="page-title-box">
-                <h4 class="page-title">Mentee Stages
-                    <a href="/admin/mentee-stages/create"
-                       class="btn btn-primary btn-sm pull-right">
-                        <i class="fa fa-plus"></i>
-                        Add Mentee Stage
-                    </a>
-                </h4>
+                <h4 class="page-title">Users</h4>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-                    <li class="breadcrumb-item active"><a href="#">Mentee Stages</a></li>
+                    <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
+                    <li class="breadcrumb-item active"><a href="#">Users</a></li>
                 </ol>
             </div>
         </div>
@@ -37,31 +31,42 @@
 
                         <thead>
                         <th width="10">S.No</th>
-                        <th width="100">Mentee Stage</th>
+                        <th>Name</th>
+                        <th width="100">Email Address</th>
+                        <th>User Type</th>
+                        {{-- <th width="150">Startup Type</th> --}}
                         <th width="180">Action</th>
                         </thead>
 
                         <tbody>
-                        @foreach($stages as $stage)
+                        @foreach($users as $user)
                             <tr>
                                 <td>
                                     {{$sn++}}
                                 </td>
 
                                 <td>
-                                    {{$stage->name}}
+                                    {{$user['first_name'] . ' ' . $user['last_name'] }}
                                 </td>
 
                                 <td>
-                                    <a href="/admin/mentee-stages/{{$stage->id}}/edit"
-                                       class="btn btn-info btn-sm">
-                                        Edit
-                                    </a> |
+                                    {{$user['email']}}
+                                </td>
+
+                                <td>
+                                    {{ $user['mentor']['mentee'] }}
+                                </td>
+
+                                {{-- <td>
+                                    {{ $user['startup_type'] ? $user['startup_type']['startup_type'] : '' }}
+                                </td> --}}
+
+                                <td>
                                     <button
                                         class="btn btn-danger btn-sm waves-effect waves-light delete-button"
                                         data-toggle="modal"
-                                        data-url="/admin/mentee-stages/{{$stage->id}}"
-                                        data-target="#delete-mentee-stage">
+                                        data-url="/admin/users/{{$user['id']}}"
+                                        data-target="#delete-user">
                                         Delete
                                     </button>
                                 </td>
@@ -74,7 +79,7 @@
             </div>
         </div>
 
-        @include('admin.mentee-stages.partials._delete')
+        @include('admin.users.partials._delete')
 
     </div>
 

@@ -15,4 +15,9 @@ class Mentor extends Model
         return $this->belongsTo('App\Category');
     }
 
+     public function users()
+    {
+        return $this->hasMany(User::class);
+    }
+
 }

@@ -25,6 +25,8 @@ class UserSeeder extends Seeder
                 'middle_name' => 'you',
 
                 'email' => 'bee@gmail.com',
+
+                
             ]);
 
         }

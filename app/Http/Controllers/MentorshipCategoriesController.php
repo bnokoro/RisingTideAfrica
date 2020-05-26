@@ -58,10 +58,10 @@ class MentorshipCategoriesController extends Controller
         return redirect('/admin/mentorship-categories')->with('success', $message);
     }
 
-    public function destroy(Category $category)
+    public function destroy(Category $mentorship_category)
     {
-        $message = $category->name . ' category has been deleted!';
-        $category->delete();
+        $message = $mentorship_category->name . ' category has been deleted!';
+        $mentorship_category->delete();
 
         return redirect()->back()->with('success', $message);
     }

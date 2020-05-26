@@ -19,10 +19,12 @@ class CreateUsersTable extends Migration
             $table->string('last_name');
             $table->string('middle_name')->nullable();
             $table->string('email')->unique();
-            $table->enum('role', ['writer', 'admin'])->default('writer');
-            $table->text('about')->nullable();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password')->nullable();
+            // $table->enum('role', ['writer', 'admin'])->default('writer');
+            // $table->text('about')->nullable();
+            // $table->timestamp('email_verified_at')->nullable();
+            // $table->string('password')->nullable();
+            // // $table->tinyInteger('mentor_id');
+            // //  $table->tinyInteger('mentee_id');
             $table->timestamps();
         });
     }

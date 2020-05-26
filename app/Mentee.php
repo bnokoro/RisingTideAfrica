@@ -20,4 +20,9 @@ class Mentee extends Model
         return $this->belongsTo('App\Stage');
     }
 
-}
+     public function users()
+    {
+        return $this->hasMany(User::class);
+    }
+
+  }

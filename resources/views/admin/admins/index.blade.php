@@ -51,11 +51,13 @@
                                 </td>
 
                                 <td>
-                                    {{$admin->name }}
+                                   
+                                     {{$admin['first_name'] . ' ' . $admin['last_name'] }}
                                 </td>
 
                                 <td>
-                                    {{$admin->email}}
+                                    
+                                    {{$admin['email']}}
                                 </td>
 
                                 <td>
@@ -67,8 +69,7 @@
                                        class="btn btn-info btn-sm">
                                         Edit
                                     </a>
-                                    {{-- @if($admin->id != auth()->id())
-                                     @endif --}}
+                                     @if($admin->id != auth()->id())
                                       <button
                                             class="btn btn-danger btn-sm waves-effect waves-light delete-button"
                                             data-toggle="modal"
@@ -76,6 +77,8 @@
                                             data-target="#delete-admin">
                                             Delete
                                     </button>
+                                     @endif 
+                                     
                                 </td>
                             </tr>
                         @endforeach

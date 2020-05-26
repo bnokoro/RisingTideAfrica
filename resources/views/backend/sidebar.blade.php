@@ -48,7 +48,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/admins" class="waves-effect">
+                        <a href="/admin/admins" class="waves-effect">
                             <i class="fas fa-users"></i>
                             <span> Admins </span>
                         </a>
