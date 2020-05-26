@@ -13,21 +13,21 @@ class UserSeeder extends Seeder
     public function run()
     {
         $user = User::where('email', 'bee@gmail.com')->first();
-    
 
-    if (!$user) {
-         User::create([
 
-            'first_name' => 'bless',
+        if (!$user) {
+            User::create([
 
-            'last_name' => 'me',
+                'first_name' => 'bless',
 
-            'middle_name' => 'you',
+                'last_name' => 'me',
 
-            'email' => 'bee@gmail.com',
-         ]);
-        
+                'middle_name' => 'you',
+
+                'email' => 'bee@gmail.com',
+            ]);
+
+        }
     }
-}
 
 }

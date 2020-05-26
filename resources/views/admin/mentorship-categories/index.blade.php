@@ -15,7 +15,7 @@
         <div class="col-sm-12">
             <div class="page-title-box">
                 <h4 class="page-title">Mentorship Categories
-                    <a href="/mentorship-categories/create"
+                    <a href="/admin/mentorship-categories/create"
                        class="btn btn-primary btn-sm pull-right">
                         <i class="fa fa-plus"></i>
                         Add Mentorship Category
@@ -53,14 +53,14 @@
                                 </td>
 
                                 <td>
-                                    <a href="/mentorship-categories/{{$category->id}}/edit"
+                                    <a href="/admin/mentorship-categories/{{$category->id}}/edit"
                                        class="btn btn-info btn-sm">
                                         Edit
                                     </a> |
                                     <button
                                         class="btn btn-danger btn-sm waves-effect waves-light delete-button"
                                         data-toggle="modal"
-                                        data-url="/mentorship-categories/{{$category->id}}"
+                                        data-url="/admin/mentorship-categories/{{$category->id}}"
                                         data-target="#delete-mentorship-category">
                                         Delete
                                     </button>

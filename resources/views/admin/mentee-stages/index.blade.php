@@ -15,7 +15,7 @@
         <div class="col-sm-12">
             <div class="page-title-box">
                 <h4 class="page-title">Mentee Stages
-                    <a href="/mentee-stages/create"
+                    <a href="/admin/mentee-stages/create"
                        class="btn btn-primary btn-sm pull-right">
                         <i class="fa fa-plus"></i>
                         Add Mentee Stage
@@ -53,7 +53,7 @@
                                 </td>
 
                                 <td>
-                                    <a href="/mentee-stages/{{$stage->id}}/edit"
+                                    <a href="/admin/mentee-stages/{{$stage->id}}/edit"
                                        class="btn btn-info btn-sm">
                                         Edit
                                     </a> |
