@@ -14,14 +14,14 @@
 
                  
                     <li class="menu-title">Users</li>
-                    @if(auth()->user()->isAdmin())
+                    {{-- @if(auth()->user()->isAdmin()) --}}
                     <li>
                         <a href="/users" class="waves-effect">
                             <i class="fas fa-users"></i>
                             <span> Users </span>
                         </a>
                     </li>
-                    @endif
+                    {{-- @endif --}}
                     <li>
                         <a href="/mentors-back" class="waves-effect">
                             <i class="fas fa-users"></i>
@@ -48,7 +48,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/admin/admins" class="waves-effect">
+                        <a href="/admins" class="waves-effect">
                             <i class="fas fa-users"></i>
                             <span> Admins </span>
                         </a>
