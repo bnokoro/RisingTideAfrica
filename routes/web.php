@@ -33,24 +33,29 @@ use Illuminate\Http\Request;
 // })->name('admin');
 
 Route::prefix('admin')->group(function () {
+
+//    Auth::routes();
+    Route::get('/login', 'AuthController@index')->middleware('guest')->name('login');
+    Route::post('login', 'AuthController@store')->middleware('guest');
+    Route::post('logout', 'AuthController@logout');
+
     Route::get('/', function () {
         return view('home');
     });
 
-    Route::resource('mentorship-categories', 'MentorshipCategoriesController');
+    Route::middleware('auth')->group(function () {
+        Route::resource('mentorship-categories', 'MentorshipCategoriesController');
+        Route::resource('mentee-stages', 'MenteeStagesController');
 
-    Route::resource('mentee-stages', 'MenteeStagesController');
+        Route::resource('mentors', 'MentorsController');
+        Route::resource('mentees', 'MenteesController');
 
+        Route::get('users', 'UsersController@index');
+        Route::delete('users/{user}', 'UsersController@destroy');
 
-    Route::resource('mentors', 'MentorsController');
+        Route::resource('admins', 'AdminsController');
+    });
 
-    Route::resource('mentees', 'MenteesController');
-
-    Route::get('users', 'UsersController@index');
-
-    Route::delete('users/{user}', 'UsersController@destroy');
-
-    Route::resource('admins', 'AdminsController');
 });
 
 
@@ -80,7 +85,6 @@ Route::post('/mentees', 'MenteesController@store');
 
 
 
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 //

@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -2237,26 +2237,14 @@ $('.mentorship-stage-select').on('change', function () {
 
 /***/ }),
 
-/***/ "./resources/sass/main.scss":
-/*!**********************************!*\
-  !*** ./resources/sass/main.scss ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 0:
-/*!***************************************************************!*\
-  !*** multi ./resources/js/main.js ./resources/sass/main.scss ***!
-  \***************************************************************/
+/***/ 1:
+/*!************************************!*\
+  !*** multi ./resources/js/main.js ***!
+  \************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/olaide/Sites/risingtide/resources/js/main.js */"./resources/js/main.js");
-module.exports = __webpack_require__(/*! /Users/olaide/Sites/risingtide/resources/sass/main.scss */"./resources/sass/main.scss");
+module.exports = __webpack_require__(/*! /Users/olaide/Sites/risingtide/resources/js/main.js */"./resources/js/main.js");
 
 
 /***/ })
