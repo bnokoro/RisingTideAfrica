@@ -93,6 +93,6 @@ class MentorsController extends Controller
         $mentors = Mentor::whereSessionId($current_session->id)->count() < $no_days;
         $mentees = Mentee::whereSessionId($current_session->id)->count() < $no_days;
 
-        return response()->json(['mentor' => false, 'mentee' => false]);
+        return response()->json(['mentor' => $mentors, 'mentee' => $mentees]);
     }
 }
