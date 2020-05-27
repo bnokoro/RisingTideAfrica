@@ -6,18 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class Mentor extends Model
 {
- protected $fillable = [
-        'first_name', 'last_name', 'phone', 'middle_name', 'email',  'category_id', 'day_choosen', 'time_choosen', 'mentee_id'
+    protected $fillable = [
+        'first_name', 'last_name', 'phone', 'middle_name', 'email', 'category_id', 'day_choosen', 'time_choosen', 'mentee_id'
     ];
 
-     public function category()
+    public function category()
     {
         return $this->belongsTo('App\Category');
     }
 
-     public function users()
+    public function users()
     {
         return $this->hasMany(User::class);
+    }
+
+    public function mentee()
+    {
+        return $this->belongsTo(Mentee::class);
     }
 
 }

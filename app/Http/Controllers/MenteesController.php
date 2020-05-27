@@ -15,8 +15,18 @@ class MenteesController extends Controller
 {
     public function index()
     {
-        $categories = Category::orderBy('name')->get()->toArray();
-        $mentees = Mentee::orderBy('first_name')->get()->toArray();
+        $mentees = Mentee::with('category', 'stage')->orderBy('first_name')->get()
+            ->map(function ($mentee) {
+                $time = '';
+                if ($mentee->time_choosen == 5) {
+                    $time = '5pm - 6pm';
+                } else if ($mentee->time_choosen == 6) {
+                    $time = '6pm - 7pm';
+                }
+                $mentee->time = $time;
+                return $mentee;
+            })
+            ->toArray();
         $sn = 1;
 
         return view('admin.mentees.index', compact('mentees', 'sn'));

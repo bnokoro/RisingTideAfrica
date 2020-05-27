@@ -42,12 +42,12 @@ Route::prefix('admin')->group(function () {
     Route::resource('mentee-stages', 'MenteeStagesController');
 
 
-    Route::resource('mentors-back', 'MentorsController');
+    Route::resource('mentors', 'MentorsController');
 
-    Route::resource('mentees-back', 'MenteesController');
+    Route::resource('mentees', 'MenteesController');
 
     Route::get('users', 'UsersController@index');
-    
+
     Route::delete('users/{user}', 'UsersController@destroy');
 
     Route::resource('admins', 'AdminsController');

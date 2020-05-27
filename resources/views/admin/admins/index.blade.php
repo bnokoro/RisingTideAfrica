@@ -51,12 +51,12 @@
                                 </td>
 
                                 <td>
-                                   
-                                     {{$admin['first_name'] . ' ' . $admin['last_name'] }}
+
+                                     {{$admin['name'] }}
                                 </td>
 
                                 <td>
-                                    
+
                                     {{$admin['email']}}
                                 </td>
 
@@ -77,8 +77,8 @@
                                             data-target="#delete-admin">
                                             Delete
                                     </button>
-                                     @endif 
-                                     
+                                     @endif
+
                                 </td>
                             </tr>
                         @endforeach

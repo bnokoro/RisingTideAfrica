@@ -18,18 +18,18 @@
                     <li>
                         <a href="/admin/users" class="waves-effect">
                             <i class="fas fa-users"></i>
-                            <span> Users </span>
+                            <span> All Mentors </span>
                         </a>
                     </li>
 
                     <li>
-                        <a href="/admin/mentors-back" class="waves-effect">
+                        <a href="/admin/mentors" class="waves-effect">
                             <i class="fas fa-users"></i>
-                            <span> Mentors </span>
+                            <span> Registered Mentors </span>
                         </a>
                     </li>
                      <li>
-                        <a href="/admin/mentees-back" class="waves-effect">
+                        <a href="/admin/mentees" class="waves-effect">
                             <i class="fas fa-users"></i>
                             <span> Mentees </span>
                         </a>

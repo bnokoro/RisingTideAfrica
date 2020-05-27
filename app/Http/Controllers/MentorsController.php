@@ -12,9 +12,18 @@ class MentorsController extends Controller
 {
     public function index()
     {
-
-        $categories = Category::orderBy('name')->get()->toArray();
-        $mentors = Mentor::orderBy('first_name')->get()->toArray();
+        $mentors = Mentor::with('category', 'mentee')->orderBy('first_name')->get()
+            ->map(function ($mentor) {
+                $time = '';
+                if ($mentor->time_choosen == 5) {
+                    $time = '5pm - 6pm';
+                } else if ($mentor->time_choosen == 6) {
+                    $time = '6pm - 7pm';
+                }
+                $mentor->time = $time;
+                return $mentor;
+            })
+            ->toArray();
         $sn = 1;
 
         return view('admin.mentors.index', compact('mentors', 'sn'));

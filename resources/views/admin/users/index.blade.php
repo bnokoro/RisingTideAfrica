@@ -14,10 +14,10 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="page-title-box">
-                <h4 class="page-title">Users</h4>
+                <h4 class="page-title">All Mentors</h4>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
-                    <li class="breadcrumb-item active"><a href="#">Users</a></li>
+                    <li class="breadcrumb-item active"><a href="#">All Mentors</a></li>
                 </ol>
             </div>
         </div>
@@ -33,8 +33,6 @@
                         <th width="10">S.No</th>
                         <th>Name</th>
                         <th width="100">Email Address</th>
-                        <th>User Type</th>
-                        {{-- <th width="150">Startup Type</th> --}}
                         <th width="180">Action</th>
                         </thead>
 
@@ -52,14 +50,6 @@
                                 <td>
                                     {{$user['email']}}
                                 </td>
-
-                                <td>
-                                    {{ $user['mentor']['mentee'] }}
-                                </td>
-
-                                {{-- <td>
-                                    {{ $user['startup_type'] ? $user['startup_type']['startup_type'] : '' }}
-                                </td> --}}
 
                                 <td>
                                     <button
