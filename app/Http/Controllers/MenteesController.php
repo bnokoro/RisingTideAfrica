@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Mail\MentorAssigned;
 use App\Mentor;
+use App\Session;
 use App\User;
 use App\Mentee;
 use Illuminate\Http\Request;
@@ -58,6 +59,13 @@ class MenteesController extends Controller
             'day_choosen' => 'required',
         ]);
 
+
+        $session = Session::whereActive(1)->first();
+
+        if (!$session) {
+            return redirect()->back()->with('error', 'There are no active sessions. Please check back later');
+        }
+
         if (Mentee::whereEmail($request->email)->exists()) {
             return redirect()->back()->with('error', 'You\'ve registered before.');
         }
@@ -75,9 +83,10 @@ class MenteesController extends Controller
             return redirect()->back()->with('error', 'There is no available mentor for selected date and category. Please choose another');
         }
 
-        $mentee = Mentee::create($request->except('day_choosen', 'time_choosen') + [
+        $mentee = Mentee::create($request->except('day_choosen', 'time_choosen', 'session_id') + [
                 'day_choosen' => $day_choosen,
-                'time_choosen' => mb_substr($request->time_choosen, 0, 1)
+                'time_choosen' => mb_substr($request->time_choosen, 0, 1),
+                'session_id' => $session->id
             ]);
 
         $mentor->update(['mentee_id' => $mentee->id]);

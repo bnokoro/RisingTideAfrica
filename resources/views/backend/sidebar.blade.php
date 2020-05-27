@@ -53,6 +53,12 @@
                             <span> Admins </span>
                         </a>
                     </li>
+                    <li>
+                        <a href="/admin/sessions" class="waves-effect">
+                            <i class="fas fa-cogs"></i>
+                            <span> Sessions </span>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="clearfix"></div>

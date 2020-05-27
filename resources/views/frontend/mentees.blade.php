@@ -12,7 +12,8 @@
         </div>
     @endif
 
-    <div class="wrap-contact100">
+
+    <div class="wrap-contact100" id="mentee-content">
         <form class="contact100-form validate-form" method="post" action="mentees">
             @csrf
             <span class="contact100-form-title">
@@ -138,5 +139,8 @@
                 </div>
             </div>
         </form>
+    </div>
+    <div class="wrap-contact100" id="no-slot-mentee">
+        <h4 class="text-center">All sessions are booked. Please wait till the next session.</h4>
     </div>
 @endsection

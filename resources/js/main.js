@@ -1,15 +1,7 @@
 import Axios from 'axios';
 
 // Init Bootstrap Datepicker
-$(function () {
-    $("#datepicker").datepicker({
-        autoclose: true,
-        todayHighlight: true,
-        format: "yy-mm-dd",
-        startDate: new Date('2020-6-01'),
-        endDate: new Date('2020-6-30')
-    }).datepicker('update', new Date());
-});
+
 
 // Pass id to delete modal
 $('.delete-button').on('click', function (event) {
@@ -52,70 +44,111 @@ $('#mentor-email').bind('blur keypress', function (e) {
 });
 
 
+
 $('#date-error').hide();
-$('.day_choosen_mentor').datepicker({
-    autoclose: true,
-    todayHighlight: true,
-    format: "yy-mm-dd",
-    startDate: new Date('2020-6-01'),
-    endDate: new Date('2020-6-30')
-})
-    .on('changeDate', function (e) {
-        $('#date-error').hide();
-        const selectedDate = new Date(Date.parse(e.date)).toLocaleDateString();
-        $('#selected_date_input').val(selectedDate);
-        if (selectedDate) {
-            Axios.post('check-date', {selectedDate}).then(response => {
-                if (response.data.slot_exists) {
-                    $('#date-error').show();
-                    $('.mentor-submit').attr('disabled', "true");
-                } else {
-                    $('.mentor-submit').removeAttr('disabled');
-                }
-            })
-        }
+Axios.get('/sessions/active').then(res => {
+    const session = res.data.data;
+
+    $(function () {
+        $("#datepicker").datepicker({
+            autoclose: true,
+            todayHighlight: true,
+            format: "yy-mm-dd",
+            startDate: new Date(session.start_date),
+            endDate: new Date(session.end_date)
+        }).datepicker('update', new Date());
     });
 
-$('.day_choosen_mentee').datepicker({
-    autoclose: true,
-    todayHighlight: true,
-    format: "yy-mm-dd",
-    startDate: new Date('2020-6-01'),
-    endDate: new Date('2020-6-30')
-})
-    .on('changeDate', function (e) {
-        $('#date-error').hide();
-        $('[name="time_choosen"]').val('');
-        const selectedDate = new Date(Date.parse(e.date)).toLocaleDateString();
-        $('#selected_date_input').val(selectedDate);
-        if (selectedDate) {
-            Axios.post('check-date-mentee', {selectedDate}).then(response => {
-                if (!response.data.mentor_exists) {
-                    $('#date-error').text('There is no available mentor for selected date. Please choose another');
-                    $('#date-error').show();
-                    $('.mentee-submit').attr('disabled', "true");
-                } else {
+    $('.day_choosen_mentor').datepicker({
+        autoclose: true,
+        todayHighlight: true,
+        format: "yy-mm-dd",
+        startDate: new Date(session.start_date),
+        endDate: new Date(session.end_date)
+    })
+        .on('changeDate', function (e) {
+            $('#date-error').hide();
+            const selectedDate = new Date(Date.parse(e.date)).toLocaleDateString();
+            $('#selected_date_input').val(selectedDate);
+            if (selectedDate) {
+                Axios.post('check-date', {selectedDate}).then(response => {
                     if (response.data.slot_exists) {
-                        $('#date-error').text('Slot is occupied. Choose another date.');
+                        $('#date-error').show();
+                        $('.mentor-submit').attr('disabled', "true");
+                    } else {
+                        $('.mentor-submit').removeAttr('disabled');
+                    }
+                })
+            }
+        });
+
+    $('.day_choosen_mentee').datepicker({
+        autoclose: true,
+        todayHighlight: true,
+        format: "yy-mm-dd",
+        startDate: new Date(session.start_date),
+        endDate: new Date(session.end_date)
+    })
+        .on('changeDate', function (e) {
+            $('#date-error').hide();
+            $('[name="time_choosen"]').val('');
+            const selectedDate = new Date(Date.parse(e.date)).toLocaleDateString();
+            $('#selected_date_input').val(selectedDate);
+            if (selectedDate) {
+                Axios.post('check-date-mentee', {selectedDate}).then(response => {
+                    if (!response.data.mentor_exists) {
+                        $('#date-error').text('There is no available mentor for selected date. Please choose another');
                         $('#date-error').show();
                         $('.mentee-submit').attr('disabled', "true");
                     } else {
-                        $('.mentee-submit').removeAttr('disabled');
-                        const timeChoosen = response.data.time_choosen;
-                        if (timeChoosen) {
-                            let time = '';
-                            if (timeChoosen == 5) {
-                                time = '5pm - 6pm';
-                            } else if (timeChoosen == 6) {
-                                time = '6pm - 7pm';
+                        if (response.data.slot_exists) {
+                            $('#date-error').text('Slot is occupied. Choose another date.');
+                            $('#date-error').show();
+                            $('.mentee-submit').attr('disabled', "true");
+                        } else {
+                            $('.mentee-submit').removeAttr('disabled');
+                            const timeChoosen = response.data.time_choosen;
+                            if (timeChoosen) {
+                                let time = '';
+                                if (timeChoosen == 5) {
+                                    time = '5pm - 6pm';
+                                } else if (timeChoosen == 6) {
+                                    time = '6pm - 7pm';
+                                }
+                                $('[name="time_choosen"]').val(time);
                             }
-                            $('[name="time_choosen"]').val(time);
                         }
                     }
-                }
-            })
-        }
-    });
+                })
+            }
+        });
+})
+$('#no-slot-mentor').hide();
+$('#no-slot-mentee').hide();
+// Check sessions is occupied
+Axios.get('/slots-available').then(res => {
+    const {mentor, mentee} = res.data;
+    if (!mentor) {
+        $('#no-slot-mentor').show();
+        $('#mentor-content').hide();
+    }
+
+    if (mentor) {
+        $('#no-slot-mentor').hide();
+        $('#mentor-content').show();
+    }
+
+    if (!mentee) {
+        $('#no-slot-mentee').show();
+        $('#mentee-content').hide();
+    }
+
+    if (mentee) {
+        $('#no-slot-mentee').hide();
+        $('#mentee-content').show();
+    }
+})
+
 
 $('#stage-error').hide();
 $('.mentorship-stage-select').on('change', function () {

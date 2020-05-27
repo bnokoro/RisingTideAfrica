@@ -41,7 +41,7 @@
 
                 <h3 class="text-center m-0">
                     <a href="#" class="logo logo-admin">
-                        <img src="/favicon.png" alt="logo">
+                        <img class="img-fluid" style="width: 120px" src="/images/logo.jpg" alt="logo">
                     </a>
                 </h3>
 

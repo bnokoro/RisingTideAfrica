@@ -12,7 +12,8 @@
         </div>
     @endif
 
-    <div class="wrap-contact100">
+
+    <div class="wrap-contact100" id="mentor-content">
         <form class="contact100-form validate-form" method="post" action="mentors">
             @csrf
             <span class="contact100-form-title">
@@ -30,13 +31,15 @@
 
             <div class="wrap-input100 validate-input other-inputs" data-validate="Name is required">
                 <span class="label-input100">First Name</span>
-                <input class="input100" type="text" name="first_name" placeholder="Enter your first name" readonly required>
+                <input class="input100" type="text" name="first_name" placeholder="Enter your first name" readonly
+                       required>
                 <span class="focus-input100"></span>
             </div>
 
             <div class="wrap-input100 validate-input other-inputs" data-validate="Last Name is required">
                 <span class="label-input100">Last Name</span>
-                <input class="input100" type="text" name="last_name" placeholder="Enter your last name" readonly required>
+                <input class="input100" type="text" name="last_name" placeholder="Enter your last name" readonly
+                       required>
                 <span class="focus-input100"></span>
             </div>
 
@@ -78,8 +81,8 @@
                 <div>
                     <select class="selection-2" name="time_choosen" required readonly>
                         <option value="">Choose Time</option>
-                        <option value="5">5 &mdash; 6pm </option>
-                        <option value="6">6 &mdash; 7pm </option>
+                        <option value="5">5 &mdash; 6pm</option>
+                        <option value="6">6 &mdash; 7pm</option>
                     </select>
                 </div>
                 <span class="focus-input100"></span>
@@ -99,6 +102,9 @@
             </div>
         </form>
     </div>
+
+    <div class="wrap-contact100" id="no-slot-mentor">
+        <h4 class="text-center">All sessions are booked. Please wait till the next session.</h4>
     </div>
 
 @endsection

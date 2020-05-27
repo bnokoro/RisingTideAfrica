@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Mentee;
+use App\Session;
 use App\User;
 use App\Mentor;
 use Illuminate\Http\Request;
@@ -51,6 +53,12 @@ class MentorsController extends Controller
             'day_choosen' => 'required',
         ]);
 
+        $session = Session::whereActive(1)->first();
+
+        if (!$session) {
+            return redirect()->back()->with('error', 'There are no active sessions. Please check back later');
+        }
+
         if (Mentor::whereEmail($request->email)->exists()) {
             return redirect()->back()->with('error', 'You\'ve registered before.');
         }
@@ -64,10 +72,27 @@ class MentorsController extends Controller
             return redirect()->back()->with('error', 'Selected Day has been booked!');
         }
 
-        Mentor::create($request->except('day_choosen') + [
-                'day_choosen' => $day_choosen
+        Mentor::create($request->except('day_choosen', 'session_id') + [
+                'day_choosen' => $day_choosen,
+                'session_id' => $session->id
             ]);
 
         return redirect()->back()->with('success', 'Booking Created');
+    }
+
+    public function slotsOccupied()
+    {
+        $current_session = Session::whereActive(1)->first();
+
+        if (!$current_session) {
+            return response()->json(['mentor' => false, 'mentor' => false]);
+        }
+
+        $no_days = Carbon::parse($current_session->end_date)->diffInDays(Carbon::parse($current_session->start_date)) + 1;
+
+        $mentors = Mentor::whereSessionId($current_session->id)->count() < $no_days;
+        $mentees = Mentee::whereSessionId($current_session->id)->count() < $no_days;
+
+        return response()->json(['mentor' => false, 'mentee' => false]);
     }
 }

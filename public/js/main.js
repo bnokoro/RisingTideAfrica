@@ -2106,16 +2106,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
  // Init Bootstrap Datepicker
-
-$(function () {
-  $("#datepicker").datepicker({
-    autoclose: true,
-    todayHighlight: true,
-    format: "yy-mm-dd",
-    startDate: new Date('2020-6-01'),
-    endDate: new Date('2020-6-30')
-  }).datepicker('update', new Date());
-}); // Pass id to delete modal
+// Pass id to delete modal
 
 $('.delete-button').on('click', function (event) {
   event.preventDefault();
@@ -2156,73 +2147,113 @@ $('#mentor-email').bind('blur keypress', function (e) {
   }
 });
 $('#date-error').hide();
-$('.day_choosen_mentor').datepicker({
-  autoclose: true,
-  todayHighlight: true,
-  format: "yy-mm-dd",
-  startDate: new Date('2020-6-01'),
-  endDate: new Date('2020-6-30')
-}).on('changeDate', function (e) {
-  $('#date-error').hide();
-  var selectedDate = new Date(Date.parse(e.date)).toLocaleDateString();
-  $('#selected_date_input').val(selectedDate);
+axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/sessions/active').then(function (res) {
+  var session = res.data.data;
+  $(function () {
+    $("#datepicker").datepicker({
+      autoclose: true,
+      todayHighlight: true,
+      format: "yy-mm-dd",
+      startDate: new Date(session.start_date),
+      endDate: new Date(session.end_date)
+    }).datepicker('update', new Date());
+  });
+  $('.day_choosen_mentor').datepicker({
+    autoclose: true,
+    todayHighlight: true,
+    format: "yy-mm-dd",
+    startDate: new Date(session.start_date),
+    endDate: new Date(session.end_date)
+  }).on('changeDate', function (e) {
+    $('#date-error').hide();
+    var selectedDate = new Date(Date.parse(e.date)).toLocaleDateString();
+    $('#selected_date_input').val(selectedDate);
 
-  if (selectedDate) {
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('check-date', {
-      selectedDate: selectedDate
-    }).then(function (response) {
-      if (response.data.slot_exists) {
-        $('#date-error').show();
-        $('.mentor-submit').attr('disabled', "true");
-      } else {
-        $('.mentor-submit').removeAttr('disabled');
-      }
-    });
-  }
-});
-$('.day_choosen_mentee').datepicker({
-  autoclose: true,
-  todayHighlight: true,
-  format: "yy-mm-dd",
-  startDate: new Date('2020-6-01'),
-  endDate: new Date('2020-6-30')
-}).on('changeDate', function (e) {
-  $('#date-error').hide();
-  $('[name="time_choosen"]').val('');
-  var selectedDate = new Date(Date.parse(e.date)).toLocaleDateString();
-  $('#selected_date_input').val(selectedDate);
-
-  if (selectedDate) {
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('check-date-mentee', {
-      selectedDate: selectedDate
-    }).then(function (response) {
-      if (!response.data.mentor_exists) {
-        $('#date-error').text('There is no available mentor for selected date. Please choose another');
-        $('#date-error').show();
-        $('.mentee-submit').attr('disabled', "true");
-      } else {
+    if (selectedDate) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('check-date', {
+        selectedDate: selectedDate
+      }).then(function (response) {
         if (response.data.slot_exists) {
-          $('#date-error').text('Slot is occupied. Choose another date.');
+          $('#date-error').show();
+          $('.mentor-submit').attr('disabled', "true");
+        } else {
+          $('.mentor-submit').removeAttr('disabled');
+        }
+      });
+    }
+  });
+  $('.day_choosen_mentee').datepicker({
+    autoclose: true,
+    todayHighlight: true,
+    format: "yy-mm-dd",
+    startDate: new Date(session.start_date),
+    endDate: new Date(session.end_date)
+  }).on('changeDate', function (e) {
+    $('#date-error').hide();
+    $('[name="time_choosen"]').val('');
+    var selectedDate = new Date(Date.parse(e.date)).toLocaleDateString();
+    $('#selected_date_input').val(selectedDate);
+
+    if (selectedDate) {
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('check-date-mentee', {
+        selectedDate: selectedDate
+      }).then(function (response) {
+        if (!response.data.mentor_exists) {
+          $('#date-error').text('There is no available mentor for selected date. Please choose another');
           $('#date-error').show();
           $('.mentee-submit').attr('disabled', "true");
         } else {
-          $('.mentee-submit').removeAttr('disabled');
-          var timeChoosen = response.data.time_choosen;
+          if (response.data.slot_exists) {
+            $('#date-error').text('Slot is occupied. Choose another date.');
+            $('#date-error').show();
+            $('.mentee-submit').attr('disabled', "true");
+          } else {
+            $('.mentee-submit').removeAttr('disabled');
+            var timeChoosen = response.data.time_choosen;
 
-          if (timeChoosen) {
-            var time = '';
+            if (timeChoosen) {
+              var time = '';
 
-            if (timeChoosen == 5) {
-              time = '5pm - 6pm';
-            } else if (timeChoosen == 6) {
-              time = '6pm - 7pm';
+              if (timeChoosen == 5) {
+                time = '5pm - 6pm';
+              } else if (timeChoosen == 6) {
+                time = '6pm - 7pm';
+              }
+
+              $('[name="time_choosen"]').val(time);
             }
-
-            $('[name="time_choosen"]').val(time);
           }
         }
-      }
-    });
+      });
+    }
+  });
+});
+$('#no-slot-mentor').hide();
+$('#no-slot-mentee').hide(); // Check sessions is occupied
+
+axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/slots-available').then(function (res) {
+  var _res$data = res.data,
+      mentor = _res$data.mentor,
+      mentee = _res$data.mentee;
+
+  if (!mentor) {
+    $('#no-slot-mentor').show();
+    $('#mentor-content').hide();
+  }
+
+  if (mentor) {
+    $('#no-slot-mentor').hide();
+    $('#mentor-content').show();
+  }
+
+  if (!mentee) {
+    $('#no-slot-mentee').show();
+    $('#mentee-content').hide();
+  }
+
+  if (mentee) {
+    $('#no-slot-mentee').hide();
+    $('#mentee-content').show();
   }
 });
 $('#stage-error').hide();
