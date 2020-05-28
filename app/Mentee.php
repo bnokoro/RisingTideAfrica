@@ -6,23 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class Mentee extends Model
 {
-     protected $fillable = [
-        'first_name', 'last_name', 'phone', 'middle_name', 'email',  'category_id', 'stage_id', 'day_choosen', 'time_choosen', 'session_id'
+    protected $fillable = [
+        'first_name', 'last_name', 'phone', 'middle_name', 'email', 'category_id', 'stage_id', 'day_choosen', 'time_choosen', 'session_id', 'company_file_url'
     ];
 
-      public function category()
+    public function category()
     {
         return $this->belongsTo('App\Category');
     }
 
-      public function stage()
+    public function stage()
     {
         return $this->belongsTo('App\Stage');
     }
 
-     public function users()
+    public function users()
     {
         return $this->hasMany(User::class);
     }
 
-  }
+}

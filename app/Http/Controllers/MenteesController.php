@@ -11,6 +11,7 @@ use App\Mentee;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 
 class MenteesController extends Controller
 {
@@ -59,7 +60,6 @@ class MenteesController extends Controller
             'day_choosen' => 'required',
         ]);
 
-
         $session = Session::whereActive(1)->first();
 
         if (!$session) {
@@ -83,10 +83,17 @@ class MenteesController extends Controller
             return redirect()->back()->with('error', 'There is no available mentor for selected date and category. Please choose another');
         }
 
+        $image_path = '';
+        if ($image = $request->file('company_file')) {
+            $path = Storage::put('public/mentee_uploads', $image);
+            $image_path = env('APP_URL') . Storage::url($path);
+        }
+
         $mentee = Mentee::create($request->except('day_choosen', 'time_choosen', 'session_id') + [
                 'day_choosen' => $day_choosen,
                 'time_choosen' => mb_substr($request->time_choosen, 0, 1),
-                'session_id' => $session->id
+                'session_id' => $session->id,
+                'company_file_url' => $image_path
             ]);
 
         $mentor->update(['mentee_id' => $mentee->id]);

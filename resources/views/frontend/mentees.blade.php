@@ -14,7 +14,7 @@
 
 
     <div class="wrap-contact100" id="mentee-content">
-        <form class="contact100-form validate-form" method="post" action="mentees">
+        <form class="contact100-form validate-form" method="post" action="mentees" enctype="multipart/form-data">
             @csrf
             <span class="contact100-form-title">
                 Mentees Sign Up!
@@ -125,6 +125,12 @@
                 @error('time_choosen')
                 <span class="text-danger">{{ $message }}</span>
                 @enderror
+            </div>
+
+            <div class="wrap-input100 input100-select">
+                <span class="label-input100">Attach Company Profile</span>
+                <input class="input100" type="file" readonly name="company_file">
+                <span class="focus-input100"></span>
             </div>
 
             <div class="container-contact100-form-btn">

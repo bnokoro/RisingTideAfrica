@@ -35,6 +35,7 @@
                         <th>Time Choosen</th>
                         <th>Mentorship Category</th>
                         <th>Mentorship Stage</th>
+                        <th>Company Profile Upload</th>
                         <th>Actions</th>
                         </thead>
 
@@ -49,12 +50,13 @@
                                 <td>{{$mentee['time']}}</td>
                                 <td>{{$mentee['category'] ? $mentee['category']['name'] : ''}}</td>
                                 <td>{{$mentee['stage'] ? $mentee['stage']['name'] : ''}}</td>
+                                <td><a target="_blank" id="mentee-company-file" href="{{$mentee['company_file_url']}}">Download File</a></td>
 
                                 <td style="text-align: center">
                                     <button
                                         class="btn btn-danger btn-sm waves-effect waves-light delete-button"
                                         data-toggle="modal"
-                                        data-url="/mentee/{{$mentee['id']}}"
+                                        data-url="/admin/mentees/{{$mentee['id']}}"
                                         data-target="#delete-mentee">
                                         Delete
                                     </button>

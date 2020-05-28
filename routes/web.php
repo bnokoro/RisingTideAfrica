@@ -28,11 +28,8 @@ Route::prefix('admin')->group(function () {
     Route::post('login', 'AuthController@store')->middleware('guest');
     Route::post('logout', 'AuthController@logout');
 
-
     Route::middleware('auth')->group(function () {
-        Route::get('/', function () {
-            return view('home');
-        });
+        Route::get('/', 'AdminController@index');
         Route::resource('mentorship-categories', 'MentorshipCategoriesController');
         Route::resource('mentee-stages', 'MenteeStagesController');
 

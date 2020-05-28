@@ -2,7 +2,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-<title>SiFUSE</title>
+<title>Rising Tide Africa | Dashboard</title>
 <meta content="Admin Dashboard" name="description">
 <meta content="Themesbrand" name="author">
 <link rel="shortcut icon" href="http://lexa-v.laravel.themesbrand.com/assets/images/favicon.ico">

@@ -158,3 +158,11 @@ $('.mentorship-stage-select').on('change', function () {
         $('#stage-error').show();
     }
 });
+
+$('#mentee-company-file').click(function(e) {
+    e.preventDefault();
+    const url = $(this).attr('href');
+    console.log(url);
+    window.location.href = url;
+    // window.location.href = 'uploads/file.doc';
+});
