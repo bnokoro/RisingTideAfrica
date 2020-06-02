@@ -93,7 +93,8 @@ class MenteesController extends Controller
                 'day_choosen' => $day_choosen,
                 'time_choosen' => mb_substr($request->time_choosen, 0, 1),
                 'session_id' => $session->id,
-                'company_file_url' => $image_path
+                'company_file_url' => $image_path,
+                'time_selected' => $request->time_choosen
             ]);
 
         $mentor->update(['mentee_id' => $mentee->id]);

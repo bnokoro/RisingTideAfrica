@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Time;
 use App\User;
 use App\Mentee;
 use App\Mentor;
@@ -55,7 +56,8 @@ class UsersController extends Controller
         }
 
         $time_choosen = $mentor->first()->time_choosen;
+        $time = Time::find($time_choosen);
 
-        return response()->json(['slot_exists' => Mentee::whereDayChoosen($date)->exists(), 'mentor_exists' => true, 'time_choosen' => $time_choosen]);
+        return response()->json(['slot_exists' => Mentee::whereDayChoosen($date)->exists(), 'mentor_exists' => true, 'time_choosen' => $time_choosen, 'time' => $time]);
     }
 }

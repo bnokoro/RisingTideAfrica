@@ -53,7 +53,7 @@
                                     <button
                                         class="btn btn-danger btn-sm waves-effect waves-light delete-button"
                                         data-toggle="modal"
-                                        data-url="/mentor/{{$mentor['id']}}"
+                                        data-url="/admin/mentors/{{$mentor['id']}}"
                                         data-target="#delete-mentor">
                                         Delete
                                     </button>

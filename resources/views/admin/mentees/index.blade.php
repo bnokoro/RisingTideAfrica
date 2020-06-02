@@ -47,7 +47,7 @@
                                 <td>{{$mentee['email']}}</td>
                                 <td>{{$mentee['phone']}}</td>
                                 <td>{{$mentee['day_choosen']}}</td>
-                                <td>{{$mentee['time']}}</td>
+                                <td>{{$mentee['time_selected']}}</td>
                                 <td>{{$mentee['category'] ? $mentee['category']['name'] : ''}}</td>
                                 <td>{{$mentee['stage'] ? $mentee['stage']['name'] : ''}}</td>
                                 <td><a target="_blank" id="mentee-company-file" href="{{$mentee['company_file_url']}}">Download File</a></td>

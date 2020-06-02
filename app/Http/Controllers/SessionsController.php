@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Session;
+use App\Time;
 use Illuminate\Http\Request;
 
 class SessionsController extends Controller
@@ -80,5 +81,63 @@ class SessionsController extends Controller
         $session->delete();
 
         return redirect('/admin/sessions')->with('success', 'Deleted Session');
+    }
+
+    public function indexTime()
+    {
+        $times = Time::latest()->get();
+        $sn = 1;
+
+        return view('admin.times.index', compact('times', 'sn'));
+    }
+
+    public function createTime()
+    {
+        $action = '/admin/time-setting/';
+        $time = null;
+
+        return view('admin.times.create', compact('action', 'time'));
+    }
+
+    public function editTime(Time $time)
+    {
+        $action = '/admin/time-setting/' . $time->id;
+
+        return view('admin.times.create', compact('action', 'time'));
+    }
+
+    public function storeTime(Request $request)
+    {
+        $request->validate([
+            'start_time' => 'required',
+            'end_time' => 'required',
+        ]);
+
+        $start_time_int = mb_substr($request->start_time, 0, 1, 'UTF-8');
+
+        Time::create($request->all() + ['start_time_int' => $start_time_int]);
+
+        return redirect('/admin/time-setting')->with('success', 'Created Successfully');
+    }
+
+    public function updateTime(Time $time, Request $request)
+    {
+        $request->validate([
+            'start_time' => 'required',
+            'end_time' => 'required',
+        ]);
+
+        $start_time_int = mb_substr($request->start_time, 0, 1, 'UTF-8');
+
+        $time->update($request->all() + ['start_time_int' => $start_time_int]);
+
+        return redirect('/admin/time-setting')->with('success', 'Updated Time');
+    }
+
+    public function destroyTime(Time $time)
+    {
+        $time->delete();
+
+        return redirect('/admin/time-setting')->with('success', 'Deleted Time');
     }
 }

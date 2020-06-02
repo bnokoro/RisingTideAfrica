@@ -81,8 +81,9 @@
                 <div>
                     <select class="selection-2" name="time_choosen" required readonly>
                         <option value="">Choose Time</option>
-                        <option value="5">5 &mdash; 6pm</option>
-                        <option value="6">6 &mdash; 7pm</option>
+                        @foreach($times as $time)
+                            <option value="{{$time->id}}">{{$time->start_time . ' - ' . $time->end_time}}</option>
+                        @endforeach
                     </select>
                 </div>
                 <span class="focus-input100"></span>
