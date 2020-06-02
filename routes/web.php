@@ -52,7 +52,7 @@ Route::prefix('admin')->group(function () {
         Route::get('time-setting/create', 'SessionsController@createTime');
         Route::get('time-setting/{time}/edit', 'SessionsController@editTime');
         Route::post('time-setting', 'SessionsController@storeTime')->name('storeTime');
-        Route::patch('time-setting/{time}', 'SessionsController@updateTime');
+        Route::patch('time-setting/{time}', 'SessionsController@updateTime')->name('updateTime');
         Route::delete('time-setting/{time}', 'SessionsController@destroyTime');
     });
 

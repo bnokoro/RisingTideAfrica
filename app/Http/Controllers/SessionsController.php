@@ -93,7 +93,7 @@ class SessionsController extends Controller
 
     public function createTime()
     {
-        $action = '/admin/time-setting/';
+        $action = route('storeTime');
         $time = null;
 
         return view('admin.times.create', compact('action', 'time'));
@@ -101,7 +101,7 @@ class SessionsController extends Controller
 
     public function editTime(Time $time)
     {
-        $action = '/admin/time-setting/' . $time->id;
+        $action = route('updateTime', $time->id);
 
         return view('admin.times.create', compact('action', 'time'));
     }
