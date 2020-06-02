@@ -28,7 +28,7 @@ class SessionsController extends Controller
 
     public function create()
     {
-        $action = '/admin/sessions/';
+        $action = route('storeSession');
         $session = null;
 
         return view('admin.sessions.create', compact('action', 'session'));
@@ -36,8 +36,7 @@ class SessionsController extends Controller
 
     public function edit(Session $session)
     {
-//        return $session;
-        $action = '/admin/sessions/' . $session->id;
+        $action = route('updateSession', $session->id);
 
         return view('admin.sessions.create', compact('action', 'session'));
     }

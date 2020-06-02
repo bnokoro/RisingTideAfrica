@@ -44,8 +44,8 @@ Route::prefix('admin')->group(function () {
         Route::get('sessions', 'SessionsController@index');
         Route::get('sessions/create', 'SessionsController@create');
         Route::get('sessions/{session}/edit', 'SessionsController@edit');
-        Route::post('sessions', 'SessionsController@store');
-        Route::patch('sessions/{session}', 'SessionsController@update');
+        Route::post('sessions', 'SessionsController@store')->name('storeSession');
+        Route::patch('sessions/{session}', 'SessionsController@update')->name('updateSession');
         Route::delete('sessions/{session}', 'SessionsController@destroy');
 
         Route::get('time-setting', 'SessionsController@indexTime');
