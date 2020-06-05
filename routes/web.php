@@ -22,6 +22,14 @@ use Illuminate\Http\Request;
 //     return 'done';
 // });
 
+// Route::get('/', function () {
+//        return \Illuminate\Support\Facades\Hash::make('asdfghjkl');
+
+    
+//     return redirect('admin');
+// })->name('admin');
+
+
 Route::prefix('admin')->group(function () {
 
     Route::get('/login', 'AuthController@index')->middleware('guest')->name('login');

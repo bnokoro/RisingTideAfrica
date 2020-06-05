@@ -52,7 +52,7 @@
 
                                 <td>
 
-                                     {{$admin['name'] }}
+                                     {{$admin['first_name'] . ' '  .$admin['last_name'] }}
                                 </td>
 
                                 <td>
