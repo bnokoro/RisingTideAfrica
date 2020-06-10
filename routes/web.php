@@ -52,9 +52,16 @@ Route::prefix('admin')->group(function () {
         Route::get('sessions', 'SessionsController@index');
         Route::get('sessions/create', 'SessionsController@create');
         Route::get('sessions/{session}/edit', 'SessionsController@edit');
-        Route::post('sessions', 'SessionsController@store');
-        Route::patch('sessions/{session}', 'SessionsController@update');
+        Route::post('sessions', 'SessionsController@store')->name('storeSession');
+        Route::patch('sessions/{session}', 'SessionsController@update')->name('updateSession');
         Route::delete('sessions/{session}', 'SessionsController@destroy');
+
+        Route::get('time-setting', 'SessionsController@indexTime');
+        Route::get('time-setting/create', 'SessionsController@createTime');
+        Route::get('time-setting/{time}/edit', 'SessionsController@editTime');
+        Route::post('time-setting', 'SessionsController@storeTime')->name('storeTime');
+        Route::patch('time-setting/{time}', 'SessionsController@updateTime')->name('updateTime');
+        Route::delete('time-setting/{time}', 'SessionsController@destroyTime');
     });
 
 });
@@ -62,8 +69,9 @@ Route::prefix('admin')->group(function () {
 
 Route::get('/mentors', function () {
     $categories = App\Category::all();
+    $times = \App\Time::orderBy('start_time_int')->get();
 
-    return view('frontend/mentors', compact('categories'));
+    return view('frontend/mentors', compact('categories', 'times'));
 });
 
 Route::post('/mentors', 'MentorsController@store');

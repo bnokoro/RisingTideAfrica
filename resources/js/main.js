@@ -107,14 +107,9 @@ Axios.get('/sessions/active').then(res => {
                             $('.mentee-submit').attr('disabled', "true");
                         } else {
                             $('.mentee-submit').removeAttr('disabled');
-                            const timeChoosen = response.data.time_choosen;
+                            const timeChoosen = response.data.time;
                             if (timeChoosen) {
-                                let time = '';
-                                if (timeChoosen == 5) {
-                                    time = '5pm - 6pm';
-                                } else if (timeChoosen == 6) {
-                                    time = '6pm - 7pm';
-                                }
+                                let time = timeChoosen.start_time + ' - ' + timeChoosen.end_time;
                                 $('[name="time_choosen"]').val(time);
                             }
                         }

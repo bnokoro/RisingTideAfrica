@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Mentee extends Model
 {
     protected $fillable = [
-        'first_name', 'last_name', 'phone', 'middle_name', 'email', 'category_id', 'stage_id', 'day_choosen', 'time_choosen', 'session_id', 'company_file_url'
+        'first_name', 'last_name', 'phone', 'middle_name', 'email', 'category_id', 'stage_id', 'day_choosen', 'time_choosen', 'session_id', 'company_file_url', 'time_selected'
     ];
 
     public function category()

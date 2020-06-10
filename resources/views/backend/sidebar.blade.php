@@ -59,6 +59,12 @@
                             <span> Sessions </span>
                         </a>
                     </li>
+                    <li>
+                        <a href="/admin/time-setting" class="waves-effect">
+                            <i class="fas fa-cogs"></i>
+                            <span> Time Setting </span>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="clearfix"></div>

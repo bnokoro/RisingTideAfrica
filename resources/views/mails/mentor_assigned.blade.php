@@ -6,7 +6,7 @@ A mentee has been assigned to you. Mentorship details are as follows:
 Mentee Fullname: {{$mentee->first_name . ' ' . $mentee->last_name}} <br />
 Category Chosen: {{$mentee->category->name}} <br />
 Mentorship Date: {{\Carbon\Carbon::createFromFormat('Y-m-d', $mentee->day_choosen)->format('d-m-Y')}} <br />
-Mentorship Time: {{$time_choosen}}
+Mentorship Time: {{$mentee->time_selected}}
 
 Thanks,<br>
 Rising Tide Africa
